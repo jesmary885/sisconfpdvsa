@@ -1,0 +1,1 @@
+<img src="img/imagen.jpg" class="h-44 w-full object-cover" alt="">
