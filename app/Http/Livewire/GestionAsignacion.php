@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Asignacion;
+use App\Models\Avance;
 use App\Models\Division;
 use App\Models\Negocio;
 use App\Models\Objestrategico;
@@ -34,17 +35,18 @@ class GestionAsignacion extends Component
 
     public $usuarios= [];
 
-    public $fecha_conformacion_i;
-    public $fecha_conformacion_f;
-    public $fecha_recopilacion_i;
-    public $fecha_recopilacion_f;
-    public $fecha_inf_i;
-    public $fecha_inf_f;
-    public $fecha_divulgacion_i;
-    public $fecha_divulgacion_f;
-    public $fecha_carga_i;
-    public $fecha_carga_f;
-
+    public $input_conformacion_i;
+    public $input_conformacion_f;
+    public $input_recopilacion_i;
+    public $input_recopilacion_f;
+    public $input_inf_i;
+    public $input_inf_f;
+    public $input_divulgacion_i;
+    public $input_divulgacion_f;
+    public $input_carga_i;
+    public $input_carga_f;
+    public $fecha_creacion;
+    public $saved = false;
 
     public function render()
     {
@@ -54,6 +56,7 @@ class GestionAsignacion extends Component
     public function mount(){
         $this->objestrategicos=Objestrategico::all();
         $this->regions=Region::all();
+       $this->fecha_creacion = date('Y-m-d');
     }
 
 
@@ -91,59 +94,48 @@ class GestionAsignacion extends Component
     public function save(){
      
 
-
-      /*  Asignacion::create([
-            'user_id' => $this->createForm['name'],
-            'objestrategico_id' => $this->createForm['slug'],
-            'objtactico_id' => $this->createForm['icon'],
-            'objoperacional_id' => $this->createForm['icon'],
-            'fecha_conformacion_i' => $this->createForm['icon'],
-            'fecha_conformacion_f' => $this->createForm['icon'],
-            'fecha_recopilacion_i' => $this->createForm['icon'],
-            'fecha_recopilacion_f' => $this->createForm['icon'],
-            'fecha_inf_i' => $this->createForm['icon'],
-            'fecha_inf_f' => $this->createForm['icon'],
-            'fecha_divulgacion_i' => $this->createForm['icon'],
-            'fecha_divulgacion_f' => $this->createForm['icon'],
-            'fecha_carga_i' => $this->createForm['icon'],
-            'fecha_carga_f' => $this->createForm['icon'],
-        ]);
-        $this->emit('saved');*/
-
         $asignacion = new Asignacion();
+        $avance = new Avance();
 
-        $this->fecha_conformacion_i = Carbon::parse($asignacion->fecha_conformacion_i)->format('Y/m/d');
-        $this->fecha_conformacion_f = Carbon::parse($asignacion->fecha_conformacion_f)->format('Y/m/d');
-        $this->fecha_recopilacion_i = Carbon::parse($asignacion->recopilacion_i)->format('Y/m/d');
-        $this->fecha_recopilacion_f = Carbon::parse($asignacion->recopilacion_f)->format('Y/m/d');
-        $this->fecha_inf_i = Carbon::parse($asignacion->fecha_inf_i)->format('Y/m/d');
-        $this->fecha_inf_f = Carbon::parse($asignacion->fecha_inf_f)->format('Y/m/d');
-        $this->fecha_divulgacion_i = Carbon::parse($asignacion->fecha_divulgacion_i)->format('Y/m/d');
-        $this->fecha_divulgacion_f = Carbon::parse($asignacion->fecha_divulgacion_f)->format('Y/m/d');
-        $this->fecha_carga_i = Carbon::parse($asignacion->fecha_carga_i)->format('Y/m/d');
-        $this->fecha_carga_f = Carbon::parse($asignacion->fecha_carga_f)->format('Y/m/d');
+        //Calculando cantidad de dias entre fechas de cada hito
+        $conformacion_total = Carbon::parse($this->input_conformacion_i)->diffInDays(Carbon::parse($this->input_conformacion_f));
+        $recopilacion_total = Carbon::parse($this->input_recopilacion_i)->diffInDays(Carbon::parse($this->input_recopilacion_f));
+        $inf_total = Carbon::parse($this->input_inf_i)->diffInDays(Carbon::parse($this->input_inf_f));
+        $divulgacion_total = Carbon::parse($this->input_divulgacion_i)->diffInDays(Carbon::parse($this->input_divulgacion_f));
+        $carga_total = Carbon::parse($this->input_carga_i)->diffInDays(Carbon::parse($this->input_carga_f));
 
-
+        //Guardando en bdd
         $asignacion->user_id = $this->usuario_id;
         $asignacion->objestrategico_id = $this->objestrategicos_id;
         $asignacion->objtactico_id = $this->objtacticos_id;
         $asignacion->objoperacional_id = $this->objoperacionals_id;
-        $asignacion->fecha_conformacion_i = $this->fecha_conformacion_i;
-        $asignacion->fecha_conformacion_f = $this->fecha_conformacion_f;
-        $asignacion->fecha_recopilacion_i= $this->fecha_recopilacion_i;
-        $asignacion->fecha_recopilacion_f = $this->fecha_recopilacion_f;
-        $asignacion->fecha_inf_i = $this->fecha_inf_i;
-        $asignacion->fecha_inf_f = $this->fecha_inf_f;
-        $asignacion->fecha_divulgacion_i = $this->fecha_divulgacion_i;
-        $asignacion->fecha_divulgacion_f = $this->fecha_divulgacion_f;
-        $asignacion->fecha_carga_i = $this->fecha_carga_i;
-        $asignacion->fecha_carga_f = $this->fecha_carga_f;
-        
-
+        $asignacion->fecha_conformacion_i = $this->input_conformacion_i;
+        $asignacion->fecha_recopilacion_i= $this->input_recopilacion_i;
+        $asignacion->fecha_inf_i =  $this->input_inf_i;
+        $asignacion->fecha_divulgacion_i = $this->input_divulgacion_i;
+        $asignacion->fecha_carga_i = $this->input_carga_i;
+        $asignacion->fecha_creacion = $this->fecha_creacion;
+        $asignacion->plan_dias_conformacion = $conformacion_total;
+        $asignacion->plan_dias_recopilacion = $recopilacion_total;
+        $asignacion->plan_dias_inf = $inf_total;
+        $asignacion->plan_dias_divulgacion = $divulgacion_total;
+        $asignacion->plan_dias_carga = $carga_total;
         $asignacion->save();
 
-        return view('home')->with('info','La asignación ha sido almacenada correctamente');
 
+        //$ultima_asignacion = Asignacion::latest('id')->first()->id;
+        $ultima_asignacion = $asignacion->id;
+        $avance->avance_plan = '0';
+        $avance->avance_real = '0';
+        $avance->avance_desviacion = '0';
+        $avance->avance_cumplimiento = '0';
+        $avance->asignacion_id = $ultima_asignacion;
+        $avance->save();
+
+
+        $this->saved = true;
+
+       // $this->reset(['$this->objestrategicos_id','$this->objtacticos_id','$this->objoperacionals_id','$this->input_conformacion_i','$this->input_recopilacion_i','$this->input_inf_i','$this->input_divulgacion_i','$this->input_carga_i','$this->region_id','$this->division_id','$this->negocio_id']);
     }
 
 

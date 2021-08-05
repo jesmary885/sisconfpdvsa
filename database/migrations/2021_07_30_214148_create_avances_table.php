@@ -16,10 +16,10 @@ class CreateAvancesTable extends Migration
         Schema::create('avances', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('avance_plan');
-            $table->string('avance_real');
-            $table->string('avance_desviacion');
-            $table->string('avance_cumplimiento');
+            $table->float('avance_plan');
+            $table->float('avance_real');
+            $table->float('avance_desviacion');
+            $table->float('avance_cumplimiento');
             $table->unsignedBigInteger('asignacion_id');
             $table->foreign('asignacion_id')->references('id')->on('asignacions');
         });

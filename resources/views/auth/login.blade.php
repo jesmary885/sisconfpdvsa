@@ -18,21 +18,24 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
-            <div>
-                <x-label for="email" class="font-bold text-gray-300" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+            <div class="flex">
+                <x-label class="pr-14 pt-2" for="email" value="{{ __('Email') }}" />
+                <x-input id="email" class="mt-1 w-full text-gray-300" type="email" name="email" :value="old('email')" required/>
             </div>
 
-            <div class="mt-4">
-                <x-label for="password" value="{{ __('Password') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
+            <div class="mt-4 flex">
+                <x-label class="pr-8 pt-2" for="password" value="{{ __('Password') }}" />
+                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required />
             </div>
        
-
-                <x-button class="ml-4">
-                    {{ __('Log in') }}
+            <div class="pt-10 items-center w-full px-22">
+                <x-button>
+                    {{ __('Ingresar') }}
                 </x-button>
+            </div>
+                
             </div>
         </form>
     </x-authentication-card>
     @endsection
+ 

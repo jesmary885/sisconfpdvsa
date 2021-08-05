@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,7 +10,35 @@ class Asignacion extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id','created_at','updated_at'];
+    protected $fillable = ['user_id','objestrategico_id','objtactico_id','objoperacional_id','fecha_conformacion_i','fecha_recopilacion_i','fecha_inf_i','fecha_divulgacion_i','fecha_carga_i','fecha_creacion'];
+
+
+    public function SetFechaConformacionIAttribute($value)
+    {
+   
+      $this->attributes['fecha_conformacion_i'] = Carbon::createFromFormat('m/d/Y', $value)->format('Y-m-d');
+    }
+
+    public function SetFechaRecopilacionIAttribute($value)
+    {
+ 
+      $this->attributes['fecha_recopilacion_i'] = Carbon::createFromFormat('m/d/Y', $value)->format('Y-m-d');
+    }
+
+    public function SetFechaInfIAttribute($value)
+    {
+      $this->attributes['fecha_inf_i'] = Carbon::createFromFormat('m/d/Y', $value)->format('Y-m-d');
+    }
+
+    public function SetFechaDivulgacionIAttribute($value)
+    {
+      $this->attributes['fecha_divulgacion_i'] = Carbon::createFromFormat('m/d/Y', $value)->format('Y-m-d');
+    }
+
+    public function SetFechaCargaIAttribute($value)
+    {
+      $this->attributes['fecha_carga_i'] = Carbon::createFromFormat('m/d/Y', $value)->format('Y-m-d');
+    }
 
        //Relacion uno a muchos inversa
        public function objtactico(){
@@ -23,9 +52,13 @@ class Asignacion extends Model
         }
 
           //Relacion uno a muchos 
-        public function avances(){
+       /* public function avances(){
         return $this->hasMany(Avance::class);
-        }
+        }*/
+
+        public function avance(){
+          return $this->belongsTo(Avance::class);
+      }
 
          //Relacion uno a muchos inversa
        public function user(){

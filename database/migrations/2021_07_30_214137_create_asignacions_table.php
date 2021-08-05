@@ -25,15 +25,16 @@ class CreateAsignacionsTable extends Migration
             $table->unsignedBigInteger('objoperacional_id');
             $table->foreign('objoperacional_id')->references('id')->on('objoperacionals');
             $table->date('fecha_conformacion_i');
-            $table->date('fecha_conformacion_f');
             $table->date('fecha_recopilacion_i');
-            $table->date('fecha_recopilacion_f');
             $table->date('fecha_inf_i');
-            $table->date('fecha_inf_f');
             $table->date('fecha_divulgacion_i');
-            $table->date('fecha_divulgacion_f');
             $table->date('fecha_carga_i');
-            $table->date('fecha_carga_f');
+            $table->date('fecha_creacion');
+           $table->integer('plan_dias_conformacion');
+           $table->integer('plan_dias_recopilacion');
+           $table->integer('plan_dias_inf');
+           $table->integer('plan_dias_divulgacion');
+           $table->integer('plan_dias_carga');
         });
     }
 

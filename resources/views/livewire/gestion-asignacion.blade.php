@@ -1,5 +1,13 @@
 <div class="container">
-    <p class=" text-red-500 text-lg font-bold">Registro de Asignación</p>
+    @if ($saved)
+        <div class="w-full text-white bg-green-400 mb-4">
+            <div class="px-4 py-2">
+                Asignación creada satisfactoriamente
+            </div>
+        </div>
+    @endif
+
+    <p class=" text-gray-500 text-lg font-bold">Registro de Asignación</p>
 
     {{--Objetivo Estrategico--}}
 
@@ -56,32 +64,32 @@
      </div>
 
      <div class="grid grid-cols-4">
-        <div class="tems-center pt-4">
+        <div class="tems-center pt-6">
          <p class="text-gray-700 pr-8">Conformación de ENT:</p>
         </div>
-            <div class="col-span-3 pt-4 w-full">
-                <div class="flex justify-items-stretch w-full mr-6">
+            <div class="col-span-3 pt-6 w-full">
+                 <div class="flex justify-items-stretch w-full mr-6"> 
                     <div>
-                        <x-input.date wire:model="fecha_conformacion_i" id="fecha_conformacion_i" placeholder="MM/DD/YYYY" class="px-6" />
+                        <x-input.date wire:model.lazy="input_conformacion_i" id="input_conformacion_i" placeholder="Seleccione la fecha" class="px-6" />
                     </div>
-                    <div class="ml-12">
-                        <x-input.date wire:model="fecha_conformacion_f" id="fecha_conformacion_f" placeholder="MM/DD/YYYY" class="px-6" />
+                   <div class="ml-12">
+                        <x-input.date wire:model.lazy="input_conformacion_f" id="input_conformacion_f" placeholder="Seleccione la fecha" class="px-6" />
                     </div>
-                </div>
+                </div> 
             </div>
      </div>
 
-     <div class="grid grid-cols-4">
+      <div class="grid grid-cols-4">
         <div class="tems-center pt-4">
          <p class="text-gray-700 pr-8">Recopilación de información, Desarrollo y Analisis:</p>
         </div>
             <div class="col-span-3 pt-6 w-full">
                 <div class="flex justify-items-stretch w-full mr-6">
                     <div>
-                        <x-input.date wire:model="fecha_recopilacion_i" id="fecha_recopilacion_i" placeholder="MM/DD/YYYY" class="px-6"/>
+                        <x-input.date wire:model.lazy="input_recopilacion_i" id="input_recopilacion_i" placeholder="Seleccione la fecha" class="px-6"/>
                     </div>
                     <div class="ml-12">
-                        <x-input.date wire:model="fecha_recopilacion_f" id="fecha_recopilacion_f" placeholder="MM/DD/YYYY" class="px-6"/>
+                        <x-input.date wire:model.lazy="input_recopilacion_f" id="input_recopilacion_f" placeholder="Seleccione la fecha" class="px-6"/>
                     </div>
                 </div>
             </div>
@@ -94,10 +102,10 @@
             <div class="col-span-3 pt-6 w-full">
                 <div class="flex justify-items-stretch w-full mr-6">
                     <div>
-                        <x-input.date wire:model="fecha_inf_i" id="fecha_inf_i" placeholder="MM/DD/YYYY" class="px-6"/>
+                        <x-input.date wire:model.lazy="input_inf_i" id="input_inf_i" placeholder="Seleccione la fecha" class="px-6"/>
                     </div>
                     <div class="ml-12">
-                        <x-input.date wire:model="fecha_inf_f" id="fecha_inf_f" placeholder="MM/DD/YYYY" class="px-6"/>
+                        <x-input.date wire:model.lazy="input_inf_f" id="input_inf_f" placeholder="Seleccione la fecha" class="px-6"/>
                     </div>
                 </div>
             </div>
@@ -110,10 +118,10 @@
             <div class="col-span-3 pt-6 w-full">
                 <div class="flex justify-items-stretch w-full mr-6">
                     <div>
-                        <x-input.date wire:model="fecha_divulgacion_i" id="fecha_divulgacion_i" placeholder="MM/DD/YYYY" class="px-6"/>
+                        <x-input.date wire:model.lazy="input_divulgacion_i" id="input_divulgacion_i" placeholder="Seleccione la fecha" class="px-6"/>
                     </div>
                     <div class="ml-12">
-                        <x-input.date wire:model="fecha_divulgacion_f" id="fecha_divulgacion_f" placeholder="MM/DD/YYYY" class="px-6"/>
+                        <x-input.date wire:model.lazy="input_divulgacion_f" id="input_divulgacion_f" placeholder="Seleccione la fecha" class="px-6"/>
                     </div>
                 </div>
             </div>
@@ -126,14 +134,14 @@
             <div class="col-span-3 pt-6 w-full">
                 <div class="flex justify-items-stretch w-full mr-6 pr-4">
                     <div>
-                        <x-input.date wire:model="fecha_carga_i" id="fecha_carga_i" placeholder="MM/DD/YYYY" class="px-6"/>
+                        <x-input.date wire:model.lazy="input_carga_i" id="input_carga_i" placeholder="Seleccione la fecha" class="px-6"/>
                     </div>
                     <div class="ml-12">
-                        <x-input.date wire:model="fecha_carga_f" id="fecha_carga_f" placeholder="MM/DD/YYYY" class="px-6"/>
+                        <x-input.date wire:model.lazy="input_carga_f" id="input_carga_f" placeholder="Seleccione la fecha" class="px-6"/>
                     </div>
                 </div>
             </div>
-     </div>
+     </div> 
 
       {{--Region--}}
 

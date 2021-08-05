@@ -1,11 +1,11 @@
 <header class="bg-white h-full sticky top-0 z-50">
     {{--Menu superior--}}
-    <div class="container flex items-center h-26">
+    <div class="container flex items-center h-32">
         {{--Logo PDVSA--}}
         <x-logo/>
         {{--Franja roja con nombre del sistema--}}
         <div class="flex-1 px-2">
-            <h1 class="bg-gradient-to-l from-red-600 text-right rounded-lg text-white px-2">
+            <h1 class="bg-gradient-to-l from-red-600 text-right rounded-lg text-white px-2 rounded shadow-lg">
                  Sistema De Planificación de Confiabilidad Operacional SISCONF
             </h1>
         </div>
@@ -46,12 +46,12 @@
         </div>
     </div>
 
-    <nav id="navigation-menu" class="bg-gray-100 w-full h-full absolute">
-        <div class="container h-full">
-            <div class="grid grid-cols-4 h-full">
-                <div class="p-6 h-full">
+    <nav id="navigation-menu" class="bg-white h-full w-full absolute">
+        <div class="container h-full w-full">
+            <div class="grid grid-cols-4 gap-6 h-full w-full ">
+                <div class="p-6 h-full w-full bg-gradient-to-b from-gray-100 rounded shadow-lg">
                     @can('asignacion.registro_asignacion')
-                        <h2 class="text-red-500 text-lg font-bold">Gestión de Asignación</h2>
+                        <h2 class="text-red-500 text-lg font-bold ">Gestión de Asignación</h2>
                         <ul class="p-2">
                             <li class="navigation-link text-gray-500 hover:bg-TrueGray-200 hover:text-red-500"> <a href="#">Cargar Asignación</a> </li>
                             <li class="navigation-link text-gray-500 hover:bg-TrueGray-200 hover:text-red-500"> <a href="#">Consultar Asignación</a> </li>
@@ -66,7 +66,7 @@
                     </ul>
                     @endcan
                     </div>
-                    <div class="col-span-3 py-6 px-0 h-full bg-white">
+                    <div class="col-span-3 py-6 px-0 h-full bg-gradient-to-b from-gray-200 rounded shadow-lg">
                         @can('asignacion.registro_asignacion')
                         @livewire('gestion-asignacion')
                         @endcan

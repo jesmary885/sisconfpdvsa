@@ -1,1 +1,1 @@
-<img src="img/imagen.jpg" class="h-44 w-full object-cover" alt="">
+<img src="img/1.jpg" class="h-44 max-w-lg shadow-md overflow-hidden rounded-lg" alt="">

@@ -98,6 +98,8 @@ class AvanceController extends Controller
                 'avance_cumplimiento' => 'numero'
                 
             ]);
+
+            return redirect()->route('home.avance');
     }
 
     /**

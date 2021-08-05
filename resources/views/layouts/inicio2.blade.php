@@ -27,18 +27,17 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
-<body class="w-full">
+<body>
 <div id="app">
+   
 
-    <div class="font-sans text-gray-900 antialiased">
-        @yield('content')
-    </div>
+    @livewire('navigation-sn')
 
-  
-  
-    @livewireScripts
 
-    @stack('script')
 </div>
+@livewireScripts
+
+@stack('script')
+
 </body>
 </html>

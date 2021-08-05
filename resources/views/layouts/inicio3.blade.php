@@ -27,18 +27,24 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
-<body class="w-full">
-<div id="app">
+<body>
+    <div id="app">
 
-    <div class="font-sans text-gray-900 antialiased">
-        @yield('content')
+
+        @livewire('navigation')
+
+        <main class="py-4">
+            
+    <div class="alert alert-success">
+        todo chevere
     </div>
 
-  
-  
+            @yield('content')
+        </main>
+    </div>
     @livewireScripts
 
     @stack('script')
-</div>
+
 </body>
 </html>
