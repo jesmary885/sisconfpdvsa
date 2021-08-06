@@ -135,8 +135,10 @@ class GestionAsignacion extends Component
 
         $this->saved = true;
 
-       // $this->reset(['$this->objestrategicos_id','$this->objtacticos_id','$this->objoperacionals_id','$this->input_conformacion_i','$this->input_recopilacion_i','$this->input_inf_i','$this->input_divulgacion_i','$this->input_carga_i','$this->region_id','$this->division_id','$this->negocio_id']);
+
+    $this->reset(['objestrategicos_id','objtacticos_id','objoperacionals_id','input_conformacion_i','input_recopilacion_i','input_inf_i','input_divulgacion_i','input_carga_i','region_id','division_id','negocio_id','input_conformacion_f','input_recopilacion_f','input_inf_f','input_divulgacion_f','input_carga_f','usuario_id']);
+    //    $this->resetPage();
+
     }
-
-
 }
+

@@ -1,11 +1,5 @@
 <div class="container">
-    @if ($saved)
-        <div class="w-full text-white bg-green-400 mb-4">
-            <div class="px-4 py-2">
-                Asignación creada satisfactoriamente
-            </div>
-        </div>
-    @endif
+ 
 
     <p class=" text-gray-500 text-lg font-bold">Registro de Asignación</p>
 
@@ -142,6 +136,12 @@
                 </div>
             </div>
      </div> 
+
+     @if ($saved)
+            <script type="text/javascript"> 
+            window.alert("La asignacion se ha registrado correctamente");
+            </script>
+    @endif
 
       {{--Region--}}
 

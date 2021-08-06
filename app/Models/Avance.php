@@ -11,7 +11,7 @@ class Avance extends Model
 
     protected $guarded = ['id','created_at','updated_at'];
 
-    //Relacion uno a muchos inversa
+    //Relacion uno a uno inversa
     public function asignacion(){
         return $this->belongsTo(Asignacion::class);
     }

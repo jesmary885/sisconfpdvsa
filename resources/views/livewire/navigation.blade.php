@@ -48,33 +48,25 @@
 
     <nav id="navigation-menu" class="bg-white h-full w-full absolute">
         <div class="container h-full w-full">
+            @can('asignacion.registro_asignacion')
             <div class="grid grid-cols-4 gap-6 h-full w-full ">
                 <div class="p-6 h-full w-full bg-gradient-to-b from-gray-100 rounded shadow-lg">
-                    @can('asignacion.registro_asignacion')
                         <h2 class="text-red-500 text-lg font-bold ">Gestión de Asignación</h2>
                         <ul class="p-2">
                             <li class="navigation-link text-gray-500 hover:bg-TrueGray-200 hover:text-red-500"> <a href="#">Cargar Asignación</a> </li>
                             <li class="navigation-link text-gray-500 hover:bg-TrueGray-200 hover:text-red-500"> <a href="#">Consultar Asignación</a> </li>
                         </ul>
-                    @endcan
-                    {{--Opciones de cargar y consultar avances SECCION DE ANALISTAS--}}
-                    @can('avances.registro')
-                    <h2 class="text-red-600 text-lg font-bold">Gestión de Avance</h2>
-                    <ul class="p-2">
-                        <li class="navigation-link text-gray-500 hover:bg-TrueGray-200 hover:text-red-500"> <a href="#">Cargar Avance</a> </li>
-                        <li class="navigation-link text-gray-500 hover:bg-TrueGray-200 hover:text-red-500"> <a href="#">Consultar Avances</a> </li>
-                    </ul>
-                    @endcan
                     </div>
                     <div class="col-span-3 py-6 px-0 h-full bg-gradient-to-b from-gray-200 rounded shadow-lg">
-                        @can('asignacion.registro_asignacion')
                         @livewire('gestion-asignacion')
-                        @endcan
-                        @can('avances.registro')
-                        @livewire('gestion-avance')
-                        @endcan
                     </div>
             </div>
+            @endcan
+            @can('avances.registro')
+            <div class="p-6 h-full w-full bg-gradient-to-b from-gray-100 rounded shadow-lg">
+                @livewire('gestion-avance')
+            </div>
+            @endcan
         </div>
     </nav>
 </header>

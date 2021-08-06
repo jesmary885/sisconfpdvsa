@@ -51,13 +51,9 @@ class Asignacion extends Model
             return $this->belongsTo(Objestrategico::class);
         }
 
-          //Relacion uno a muchos 
-       /* public function avances(){
-        return $this->hasMany(Avance::class);
-        }*/
-
+        //Relación uno a uno
         public function avance(){
-          return $this->belongsTo(Avance::class);
+          return $this->hasOne(Avance::class);
       }
 
          //Relacion uno a muchos inversa

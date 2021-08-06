@@ -7,7 +7,7 @@
 
     <x-authentication-card-avance>
 
-    <form method="POST" action="{{ route('avances.update', $asignacion_id) }}">
+    <form method="POST" action="{{ route('asignacions.update', $asignacion) }}">
         @csrf
 
         @method('PUT')
