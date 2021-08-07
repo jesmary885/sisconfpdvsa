@@ -229,28 +229,28 @@ return [
 
         [
             'text' => 'USUARIOS',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'route' => 'admin.users.index',
+            'icon' => 'fas fa-users fa-fw',
         ],
         [
             'text' => 'REGIONES',
             'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fab fa-fw fa-buffer',
         ],
         [
             'text' => 'DIVISIONES',
             'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fab fa-fw fa-buffer',
         ],
         [
             'text' => 'NEGOCIOS',
             'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fab fa-fw fa-buffer',
         ],
         [
             'text' => 'ROLES',
             'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fas fa-users-cog fa-fw',
         ],
    
     ],
