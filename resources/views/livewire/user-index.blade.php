@@ -1,4 +1,6 @@
 <div>
+
+    
     <div class="card">
         <div class="card-header">
             <input wire:model="search" placeholder="Ingrese el nombre o correo del usuario" class="form-control">
@@ -18,7 +20,7 @@
                         @foreach ($users as $user)
                             <tr>
                                 <td>{{$user->id}}</td>
-                                <td>{{$user->name}}</td>
+                                <td>{{$user->name}} {{$user->apellido}}</td>
                                 <td>{{$user->email}}</td>
                                 <td width="10px">
                                     <a href="{{route('admin.users.edit',$user)}}" class="btn btn-primary">Editar</a>

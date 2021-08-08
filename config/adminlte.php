@@ -226,6 +226,11 @@ return [
 
     'menu' => [
       
+        [
+            'text' => 'search',
+            'search' => true,
+            'topnav' => true,
+        ],
 
         [
             'text' => 'USUARIOS',
@@ -234,25 +239,19 @@ return [
         ],
         [
             'text' => 'REGIONES',
-            'url'  => 'admin/settings',
+            'route' => 'admin.regions.index',
             'icon' => 'fab fa-fw fa-buffer',
         ],
         [
             'text' => 'DIVISIONES',
-            'url'  => 'admin/settings',
+            'route' => 'admin.divisions.index',
             'icon' => 'fab fa-fw fa-buffer',
         ],
         [
             'text' => 'NEGOCIOS',
-            'url'  => 'admin/settings',
+            'route' => 'admin.negocios.index',
             'icon' => 'fab fa-fw fa-buffer',
         ],
-        [
-            'text' => 'ROLES',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-users-cog fa-fw',
-        ],
-   
     ],
 
     /*
@@ -373,5 +372,5 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Other-Configuration
     */
 
-    'livewire' => false,
+    'livewire' => true,
 ];

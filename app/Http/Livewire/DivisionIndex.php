@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire;
 
-use App\Models\User;
+use App\Models\Division;
 use Livewire\Component;
 Use Livewire\WithPagination;
 
-class UserIndex extends Component
+class DivisionIndex extends Component
 {
     use WithPagination;
     protected $paginationTheme = "bootstrap";
@@ -19,9 +19,8 @@ class UserIndex extends Component
 
     public function render()
     {
-        $users = User::where('name', 'LIKE', '%' . $this->search . '%')
-                    ->orwhere('email', 'LIKE', '%' . $this->search . '%')
+        $divisions =  Division::where('name', 'LIKE', '%' . $this->search . '%')
                     ->paginate();
-        return view('livewire.admin.users-index',compact('users'));
+        return view('livewire.division-index',compact('divisions'));
     }
 }

@@ -8,9 +8,7 @@
 
 @section('content')
     @if (session('info'))
-        <div class="alert alert-sucess">
-            {{session('info')}}
-        </div>
+    <div class="p-3 mb-2 bg-success text-white">Se ha asignado el rol correctamente</div>
     @endif
     <div class="card">
         <div class="card-body">

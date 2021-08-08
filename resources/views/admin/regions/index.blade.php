@@ -4,13 +4,13 @@
 
 @section('content_header')
 
-<a href="{{route('admin.users.create')}}" class="btn btn-primary float-right">Registrar Usuario</a>
+<a href="{{route('admin.regions.create')}}" class="btn btn-primary float-right">Registrar Región</a>
 
-    <h1>Lista de usuarios</h1>
+    <h1>Lista de regiones</h1>
 @stop
 
 @section('content')
-    @livewire('user-index')
+    @livewire('region-index')
 @stop
 
 @section('css')

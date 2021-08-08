@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'LeeyCrece')
+@section('title', 'Sisconf')
 
 @section('content_header')
     <h1 class="text-lg text-red">Gestion Administrativa - SISCONF</h1>
 @stop
 
 @section('content')
-    
+
 @stop
 
 @section('css')
