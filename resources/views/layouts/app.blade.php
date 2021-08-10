@@ -31,6 +31,7 @@
     <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
     {{--JQuery--}}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 <body>
@@ -96,6 +97,15 @@
         </main>
     </div>
     @livewireScripts
+
+    <script>
+        livewire.on('alert', function(){
+            Swal.fire(
+                'Asignacion registrada!',
+                '',
+                'success')
+        })
+    </script>
 
     @stack('script')
 </body>

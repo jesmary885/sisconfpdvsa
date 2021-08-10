@@ -27,9 +27,12 @@
                         <!-- Account Management -->
                         @can('admin.home')
                             <a href="{{route('admin.home')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
-                                Gestión Administrativa
+                                Gestión administrativa
                             </a>
                         @endcan
+                        <a href="{{route('user.updatepass')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
+                            Cambiar contraseña
+                        </a>
                         <div class="border-t border-gray-100"></div>
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
@@ -54,7 +57,7 @@
                         <h2 class="text-red-500 text-lg font-bold ">Gestión de Asignación</h2>
                         <ul class="p-2">
                             <li class="navigation-link text-gray-500 hover:bg-TrueGray-200 hover:text-red-500"> <a href="#">Cargar Asignación</a> </li>
-                            <li class="navigation-link text-gray-500 hover:bg-TrueGray-200 hover:text-red-500"> <a href="#">Consultar Asignación</a> </li>
+                            <li class="navigation-link text-gray-500 hover:bg-TrueGray-200 hover:text-red-500"> <a href="{{route('consultas')}}">Consultar Asignación</a> </li>
                         </ul>
                     </div>
                     <div class="col-span-3 py-6 px-0 h-full bg-gradient-to-b from-gray-200 rounded shadow-lg">

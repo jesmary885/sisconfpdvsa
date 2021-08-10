@@ -6,6 +6,7 @@ use App\Models\Division;
 use App\Models\Region;
 use App\Models\User;
 use Livewire\Component;
+use Illuminate\Support\Facades\Hash;
 
 class UserCreate extends Component
 {
@@ -17,7 +18,7 @@ class UserCreate extends Component
     public $negocios = [];
 
     public $nombre, $apellido, $cedula, $indicador, $telefono, $email, $regions;
-    public $saved = false;
+    public $mensaje = false;
 
 
     public function render()
@@ -27,6 +28,7 @@ class UserCreate extends Component
 
     public function mount(){
         $this->regions=Region::all();
+       
     }
 
     public function updatedRegionId($value)
@@ -44,6 +46,7 @@ class UserCreate extends Component
 
     public function save(){
      
+        $this->mensaje = true;
 
         $usuario = new User();
     
@@ -54,14 +57,17 @@ class UserCreate extends Component
         $usuario->apellido = $this->apellido;
         $usuario->cedula = $this->cedula;
         $usuario->telefono = $this->telefono;
-        $usuario->password = $this->cedula;
+        $usuario->password = Hash::make($this->cedula);
+        //$usuario->password = $this->cedula;
         $usuario->region_id = $this->region_id;
         $usuario->division_id = $this->division_id;
         $usuario->negocio_id = $this->negocio_id;
         $usuario->save();
 
-        $this->saved = true;
-
-    $this->reset(['nombre','apellido','cedula','division_id','negocio_id','email','telefono','indicador']);
+      
+       //return view('livewire.user-create')->with('info','se ha creado el usuario correctamente');
+        $this->reset(['nombre','apellido','cedula','division_id','negocio_id','region_id','email','telefono','indicador']);
+       
+   
     }
 }

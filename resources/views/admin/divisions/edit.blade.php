@@ -8,7 +8,7 @@
 
 @section('content')
 @if (session('info'))
-<div class="p-3 mb-2 bg-success text-white">División creada correctamente</div>
+<div class="p-3 mb-2 bg-success text-white">División editada correctamente</div>
 @endif
 <div class="card">
     <div class="card-body">
@@ -29,7 +29,7 @@
                 @enderror
             </div>
 
-            {!! Form::submit('Crear división', ['class' => 'btn btn-primary']) !!}
+            {!! Form::submit('Editar división', ['class' => 'btn btn-primary']) !!}
         {!! Form::close() !!}
     </div>
 </div>

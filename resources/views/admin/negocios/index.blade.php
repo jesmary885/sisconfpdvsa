@@ -4,7 +4,7 @@
 
 @section('content_header')
 
-<a href="{{route('admin.negocios.create')}}" class="btn btn-primary float-right">Registrar Negocio</a>
+<a href="{{route('admin.negocios.create')}}" class="btn btn-primary float-right">Registrar negocio</a>
 
     <h1>Lista de Negocios</h1>
 @stop

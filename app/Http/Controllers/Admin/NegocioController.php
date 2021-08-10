@@ -17,7 +17,8 @@ class NegocioController extends Controller
 
     public function edit(Negocio $negocio)
     {
-        return view('admin.negocios.edit',compact('negocio'));
+        $divisions = Division::pluck('name','id');
+        return view('admin.negocios.edit',compact('negocio','divisions'));
     }
 
     public function update(Request $request, Negocio $negocio)
@@ -48,6 +49,7 @@ class NegocioController extends Controller
 
        $negocio = Negocio::create($request->all());
 
-       return redirect()->route('admin.negocios.edit',$negocio)->with('info', 'El negocio se ha creado con éxito');
+       $divisions = Division::pluck('name','id');
+       return redirect()->route('admin.negocios.edit',$negocio)->with('info','se ha modificado la division correctamente');
     }
 }

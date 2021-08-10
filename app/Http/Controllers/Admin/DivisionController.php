@@ -16,7 +16,8 @@ class DivisionController extends Controller
 
     public function edit(Division $division)
     {
-        return view('admin.divisions.edit',compact('division'));
+        $regions = Region::pluck('name','id');
+        return view('admin.divisions.edit',compact('division','regions'));
     }
 
     public function update(Request $request, Division $division)
@@ -45,6 +46,6 @@ class DivisionController extends Controller
 
        $division = Division::create($request->all());
 
-       return redirect()->route('admin.divisions.edit',$division)->with('info', 'La división se ha creado con éxito');
+       return redirect()->route('admin.divisions.create',$division)->with('info', 'La división se ha creado con éxito');
     }
 }

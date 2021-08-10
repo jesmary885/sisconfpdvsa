@@ -41,8 +41,8 @@ class RegionController extends Controller
            'name' =>'required',
        ]);
 
-       $region = Region::create($request->all());
+       Region::create($request->all());
 
-       return redirect()->route('admin.regions.edit',$region)->with('info', 'La región se ha creado con éxito');
+       return redirect()->route('admin.regions.create')->with('info', 'La región se ha creado con éxito');
     }
 }

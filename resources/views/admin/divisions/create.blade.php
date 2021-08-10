@@ -4,13 +4,13 @@
 
 
 @section('content_header')
-    <h1 class="text-lg text-red">Registro de División</h1>
+    <h1 class="text-lg text-gray-700">Registro de división</h1>
 @stop
 
 @section('content')
 @if (session('info'))
         <div class="p-3 mb-2 bg-success text-white">División creada correctamente</div>
-    @endif
+@endif
     <div class="card">
         <div class="card-body">
             {!! Form::open(['route' => 'admin.divisions.store']) !!}
@@ -21,7 +21,6 @@
                         <span class="text-danger">{{$message}}</span>
                     @enderror
                 </div>
-
                 <div class="form-group">
                     {!! Form::label('region_id', 'Región:') !!}
                     {!! Form::select('region_id', $regions, null, ['class' => 'form-control']) !!}
@@ -29,7 +28,6 @@
                         <small class="text-danger">{{$message}}</small>
                     @enderror
                 </div>
-
                 {!! Form::submit('Crear división', ['class' => 'btn btn-primary']) !!}
             {!! Form::close() !!}
         </div>

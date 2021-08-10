@@ -4,7 +4,7 @@
 
 @section('content_header')
 
-<a href="{{route('admin.divisions.create')}}" class="btn btn-primary float-right">Registrar División</a>
+<a href="{{route('admin.divisions.create')}}" class="btn btn-primary float-right">Registrar división</a>
 
     <h1>Lista de divisiones</h1>
 @stop

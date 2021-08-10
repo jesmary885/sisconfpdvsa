@@ -131,13 +131,8 @@ class GestionAsignacion extends Component
         $avance->avance_cumplimiento = '0';
         $avance->asignacion_id = $ultima_asignacion;
         $avance->save();
-
-
-        $this->saved = true;
-
-
-    $this->reset(['objestrategicos_id','objtacticos_id','objoperacionals_id','input_conformacion_i','input_recopilacion_i','input_inf_i','input_divulgacion_i','input_carga_i','region_id','division_id','negocio_id','input_conformacion_f','input_recopilacion_f','input_inf_f','input_divulgacion_f','input_carga_f','usuario_id']);
-    //    $this->resetPage();
+        $this->reset(['objestrategicos_id','objtacticos_id','objoperacionals_id','input_conformacion_i','input_recopilacion_i','input_inf_i','input_divulgacion_i','input_carga_i','region_id','division_id','negocio_id','input_conformacion_f','input_recopilacion_f','input_inf_f','input_divulgacion_f','input_carga_f','usuario_id']);
+        $this->emit('alert');
 
     }
 }
