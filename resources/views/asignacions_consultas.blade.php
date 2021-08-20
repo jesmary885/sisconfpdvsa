@@ -12,7 +12,7 @@
             </div>
              <div class="flex mt-4 items-center">
                  <div>
-                    <select id="categoria" class="w-52 form-control mt-4 h-8 text-m">
+                    <select id="categoria" class="w-52 form-control mt-4 h-8 text-m" name="categoria">
                         <option value="" selected>Seleccionar categoría</option>
                             <option value="1">Usuario</option>
                             <option value="2">Región</option>

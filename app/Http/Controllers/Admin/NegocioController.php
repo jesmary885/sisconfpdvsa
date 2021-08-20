@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Division;
 use App\Models\Negocio;
+use App\Models\Reportenegocio;
 use Illuminate\Http\Request;
 
 class NegocioController extends Controller
@@ -44,12 +45,19 @@ class NegocioController extends Controller
     {
        $request->validate([
            'name' =>'required',
-           'region_id' =>'required'
+           'division_id' =>'required'
        ]);
 
        $negocio = Negocio::create($request->all());
 
-       $divisions = Division::pluck('name','id');
-       return redirect()->route('admin.negocios.edit',$negocio)->with('info','se ha modificado la division correctamente');
+       Reportenegocio::create([
+        'real' => '0',
+        'plan' => '0',
+        'negocio_id' => $negocio->id
+    ]);
+
+       return redirect()->route('admin.negocios.create')->with('info','se ha creado el negocio correctamente');
     }
 }
+
+

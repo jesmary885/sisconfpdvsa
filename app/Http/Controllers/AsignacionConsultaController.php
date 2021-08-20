@@ -13,29 +13,29 @@ class AsignacionConsultaController extends Controller
 
     public function buscar(Request $request)
     {
-        if($request->categoria = '1'){
-            //return redirect()->route('consultas.usuarios');
-            return 'hola';
-        }
-        if($request->categoria = '2'){
-            return 'hola2';
-        }
-        if($request->categoria = '3'){
-            return 'holak';
-        }
-        if($request->categoria = '4'){
-            return 'hola';
-        }
-        if($request->categoria = '5'){
-            return 'hola5';
-        }
-        if($request->categoria = '6'){
-            return 'hola';
-        }
-        if($request->categoria = '7'){
-            return 'hola';
-        }
+        $tiporeporte = $request["categoria"];
 
-        
+        if($tiporeporte==1){
+         
+            return view('reportes.usuarios');
+        }
+        if($tiporeporte==2){
+            return view('reportes.regions_listado');
+        }
+        if($tiporeporte==3){
+            return view('reportes.divisions');
+        }
+        if($tiporeporte==4){
+            return view('reportes.negocios');
+        }
+        if($tiporeporte==5){
+            return view('reportes.objestrategicos');
+        }
+        if($tiporeporte==6){
+            return view('reportes.objtacticos');
+        }
+        if($tiporeporte==7){
+            return view('reportes.objoperacionals');
+        }
     }
 }

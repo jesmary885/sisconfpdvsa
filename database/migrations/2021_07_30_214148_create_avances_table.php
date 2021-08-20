@@ -22,6 +22,7 @@ class CreateAvancesTable extends Migration
             $table->integer('avance_cumplimiento');
             $table->unsignedBigInteger('asignacion_id');
             $table->foreign('asignacion_id')->references('id')->on('asignacions');
+          
         });
     }
 

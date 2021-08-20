@@ -28,7 +28,6 @@ class EditarAsignacion extends Component
     $sumreal= $conformacion + $recopilacion + $informacion + $divulgacion + $recomendaciones;
     $desviacion = ($avance->avance_plan) - $sumreal;
     $cumplimiento = ($sumreal / ($avance->avance_plan)) * 100;
-
     $avance->avance_real = $sumreal;
     $avance->asignacion_id = $this->asignacion->id;
     $avance->avance_plan = $avance->avance_plan;
@@ -37,10 +36,5 @@ class EditarAsignacion extends Component
     $avance->save();
 
     return redirect()->route('home.avance');
-    //$this->emit('render');
-
-
     }
-
-    
 }

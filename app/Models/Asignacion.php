@@ -50,6 +50,9 @@ class Asignacion extends Model
         public function objestrategico(){
             return $this->belongsTo(Objestrategico::class);
         }
+        public function anoreporte(){
+          return $this->belongsTo(Anoreporte::class);
+      }
 
         //Relación uno a uno
         public function avance(){
@@ -60,5 +63,15 @@ class Asignacion extends Model
        public function user(){
         return $this->belongsTo(User::class);
         }
+
+           //Relacion uno a muchos
+       public function reporteplans(){
+          return $this->hasMany(Reporteplan::class);
+      }
+      public function reportereals(){
+        return $this->hasMany(Reportereal::class);
+    }
+
+        
 }
 

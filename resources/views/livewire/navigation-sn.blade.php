@@ -54,12 +54,15 @@
                             <h2 class="text-red-500 text-lg font-bold ">Gestión de Asignación</h2>
                             <ul class="p-2">
                                 <li class="navigation-link text-gray-500 hover:bg-TrueGray-200 hover:text-red-500"> <a href="#">Cargar Asignación</a> </li>
-                                <li class="navigation-link text-gray-500 hover:bg-TrueGray-200 hover:text-red-500"> <a href="#">Consultar Asignación</a> </li>
+                                <li class="navigation-link text-gray-500 hover:bg-TrueGray-200 hover:text-red-500"> <a href="{{route('consultas')}}">Consultar Asignación</a> </li>
                             </ul>
                         @endcan
                 </div>
                 <div class="col-span-3 py-6 px-0 h-full bg-gradient-to-b from-gray-200 rounded shadow-lg">
+                    <main>
                     @yield('content')
+                    </main>
+
                 </div>
             </div>
         </div>

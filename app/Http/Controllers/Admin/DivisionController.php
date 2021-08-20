@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Division;
 use App\Models\Region;
+use App\Models\Reportedivision;
 use Illuminate\Http\Request;
 
 class DivisionController extends Controller
@@ -45,6 +46,12 @@ class DivisionController extends Controller
        ]);
 
        $division = Division::create($request->all());
+
+       Reportedivision::create([
+           'real' => '0',
+           'plan' => '0',
+           'division_id' => $division->id
+       ]);
 
        return redirect()->route('admin.divisions.create',$division)->with('info', 'La división se ha creado con éxito');
     }

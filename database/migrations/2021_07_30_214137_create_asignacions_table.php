@@ -16,6 +16,17 @@ class CreateAsignacionsTable extends Migration
         Schema::create('asignacions', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->date('fecha_conformacion_i');
+            $table->date('fecha_recopilacion_i');
+            $table->date('fecha_inf_i');
+            $table->date('fecha_divulgacion_i');
+            $table->date('fecha_carga_i');
+            $table->date('fecha_creacion');
+            $table->integer('plan_dias_conformacion');
+            $table->integer('plan_dias_recopilacion');
+            $table->integer('plan_dias_inf');
+            $table->integer('plan_dias_divulgacion');
+            $table->integer('plan_dias_carga');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('objestrategico_id');
@@ -24,17 +35,9 @@ class CreateAsignacionsTable extends Migration
             $table->foreign('objtactico_id')->references('id')->on('objtacticos');
             $table->unsignedBigInteger('objoperacional_id');
             $table->foreign('objoperacional_id')->references('id')->on('objoperacionals');
-            $table->date('fecha_conformacion_i');
-            $table->date('fecha_recopilacion_i');
-            $table->date('fecha_inf_i');
-            $table->date('fecha_divulgacion_i');
-            $table->date('fecha_carga_i');
-            $table->date('fecha_creacion');
-           $table->integer('plan_dias_conformacion');
-           $table->integer('plan_dias_recopilacion');
-           $table->integer('plan_dias_inf');
-           $table->integer('plan_dias_divulgacion');
-           $table->integer('plan_dias_carga');
+            $table->unsignedBigInteger('anoreporte_id');
+            $table->foreign('anoreporte_id')->references('id')->on('anoreportes');
+         
         });
     }
 

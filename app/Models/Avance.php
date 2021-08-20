@@ -15,4 +15,11 @@ class Avance extends Model
     public function asignacion(){
         return $this->belongsTo(Asignacion::class);
     }
+
+     //Relacion uno a muchos inversa
+     public function reportegenerals(){
+        return $this->belongsTo(Reportegeneral::class);
+        }
+
+  
 }

@@ -25,4 +25,10 @@ class Division extends Model
         return $this->belongsTo(Region::class);
     }
 
+     //Relación uno a uno
+     public function reportedivision(){
+        return $this->hasOne(Reportedivision::class);
+    }
+
+
 }

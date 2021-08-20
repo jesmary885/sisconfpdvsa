@@ -2,22 +2,20 @@
 
 use App\Http\Controllers\AsignacionController;
 use App\Http\Controllers\UserPasswordController;
+use App\Http\Controllers\Reportes\RegionsController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AvanceController;
 use App\Http\Livewire\GestionAsignacion;
 use App\Http\Livewire\GestionAvance;
-use App\Http\Livewire\AsignacionConsultaUsuarios;
+use App\Http\Livewire\Reportes\UsuarioReporte;
+use App\Http\Livewire\Reportes\RegionsReporte;
+use App\Http\Livewire\Reportes\DivisionsReporte;
+use App\Http\Livewire\Reportes\NegociosReporte;
+use App\Http\Livewire\Reportes\ObjoperacionalsReporte;
+use App\Http\Livewire\Reportes\ObjestrategicosReporte;
+use App\Http\Livewire\Reportes\ObjtacticosReporte;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
+
 
 Route::get('/', function () {
     return view('auth.login');
@@ -30,9 +28,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/home', GestionAvance::class)->name('home.avances');
 
 
-
-//Route::resource('avances', AvanceController::class)->only('index','edit','update')->names('avances');
-
 Route::get('/home', GestionAsignacion::class)->name('home.asignacion');
 Route::get('/home', GestionAvance::class)->name('home.avance');
 
@@ -44,4 +39,15 @@ Route::post('user/update/password', [App\Http\Controllers\UserPasswordController
 Route::get('consultas', [App\Http\Controllers\AsignacionConsultaController::class, 'index'])->name('consultas');
 Route::post('consultas', [App\Http\Controllers\AsignacionConsultaController::class, 'buscar'])->name('consultas.buscar');
 
-Route::get('consultas/usuarios', AsignacionConsultaUsuarios::class)->name('consultas.usuarios');
+Route::get('consultas_usuarios/{user}', UsuarioReporte::class)->name('reporte.usuario');
+//Route::get('consultas_regiones/{region}/{anoreporte}', RegionsReporte::class)->name('reporte.region');
+Route::get('consultas_regiones/{region}/{anoreporte}', [App\Http\Controllers\Reportes\RegionsController::class, 'index'])->name('reporte.region');
+Route::get('consultas_divisiones/{division}', DivisionsReporte::class)->name('reporte.division');
+Route::get('consultas_negocios/{negocio}', NegociosReporte::class)->name('reporte.negocio');
+Route::get('consultas_objop/{objoperacional}', ObjoperacionalsReporte::class)->name('reporte.objoperacional');
+Route::get('consultas_objest/{objestrategico}', ObjestrategicosReporte::class)->name('reporte.objestrategico');
+Route::get('consultas_objtact/{objtactico}', ObjtacticosReporte::class)->name('reporte.objtactico');
+
+Route::get('consultas/{tiporeporte}', [App\Http\Controllers\Reportes\TipoReporteController::class,'index'])->name('reporte.tipo');
+Route::get('consultas_regiones/export-excel', [App\Http\Controllers\Reportes\RegionsController::class, 'exportExcel']);
+

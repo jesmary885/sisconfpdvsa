@@ -20,4 +20,9 @@ class Negocio extends Model
     public function users(){
         return $this->hasMany(User::class);
     }
+
+     //Relación uno a uno
+     public function reportenegocio(){
+        return $this->hasOne(Reportenegocio::class);
+    }
 }

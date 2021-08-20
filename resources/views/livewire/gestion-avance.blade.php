@@ -16,11 +16,22 @@
                     <tbody>
                          @foreach ($asignacions as $asignacion)
                             <tr class="py-2 border">
-                                <td class="py-4 pr-4 pl-6">{{$asignacion->objoperacional->description}}</td>
-                                <td class="py-2 pl-4">{{round($asignacion->avance->avance_real,2) ?? '-'}}</td>
-                                <td class="py-2 pl-8">{{round($asignacion->avance->avance_plan,2) ?? '-'}}</td>
-                                <td class="py-2 pl-8">{{round($asignacion->avance->avance_desviacion,2) ?? '-'}}</td>
-                                <td class="py-2 pl-8">{{round($asignacion->avance->avance_cumplimiento,2) ?? '-'}}</td>
+                                <td class="py-4 pr-4 pl-6">{{$asignacion->objoperacional->description}} %</td>
+                                <td class="py-2 pl-4">{{round($asignacion->avance->avance_real,2) ?? '-'}} %</td>
+                                <td class="py-2 pl-8">{{round($asignacion->avance->avance_plan,2) ?? '-'}} %</td>
+                                <?php $desviacion = ($asignacion->avance->avance_plan) - ($asignacion->avance->avance_real);
+                                        if( $desviacion >=1 && $desviacion <=9){
+                                            $colord = 'orange';
+                                        }else if($desviacion >=10) {
+                                            $colord = 'red';
+                                        }else if($desviacion <=1) {
+                                            $colord = 'green';
+                                        }
+                                        ?>
+                                
+                                        <td class="py-2 pl-8 font-bold" style ="color: {{$colord}}"> {{round(($asignacion->avance->avance_plan) - ($asignacion->avance->avance_real)),2}} % </td>
+                                        <td class="py-2 pl-8">{{round((($asignacion->avance->avance_real) / ($asignacion->avance->avance_plan))*100),2}} %</td>
+                                   
                                 <td width="10px" class="px-4 items-center">
                                     @livewire('editar-asignacion', ['asignacion' => $asignacion])
                                   {{-- <a href="{{route('asignacions.edit',$asignacion)}}" class="btn btn-primary px-4 text-red-500 text-sm font-bold">Editar</a> --}}
@@ -30,9 +41,6 @@
                     </tbody>
                 </table>
             </div>
-           
-            
-
          @else 
              <div class="card-body">
                 <strong>No hay asignaciones</strong>

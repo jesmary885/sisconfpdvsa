@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Anoreporte;
 use App\Models\Asignacion;
 use App\Models\Avance;
 use App\Models\Division;
@@ -10,6 +11,9 @@ use App\Models\Objestrategico;
 use App\Models\Objoperacional;
 use App\Models\Objtactico;
 use App\Models\Region;
+use App\Models\Reportegeneral;
+use App\Models\Reporteplan;
+use App\Models\Reportereal;
 use Carbon\Carbon;
 use Livewire\Component;
 
@@ -46,6 +50,9 @@ class GestionAsignacion extends Component
     public $input_carga_i;
     public $input_carga_f;
     public $fecha_creacion;
+    public $fecha_actual;
+    public $ano;
+ 
     public $saved = false;
 
     public function render()
@@ -57,9 +64,8 @@ class GestionAsignacion extends Component
         $this->objestrategicos=Objestrategico::all();
         $this->regions=Region::all();
        $this->fecha_creacion = date('Y-m-d');
+
     }
-
-
 
     public function updatedObjestrategicosId($value)
     {
@@ -92,11 +98,17 @@ class GestionAsignacion extends Component
     }
 
     public function save(){
-     
+
+        $this->fecha_actual = date('Y-m-d');
+       $fecha = Carbon::parse($this->fecha_actual);
+       $this->ano = $fecha->year;
+       $ano_reporte = Anoreporte::where('ano',$this->ano)->first();
 
         $asignacion = new Asignacion();
         $avance = new Avance();
-
+        $reportegeneral = Reportegeneral::where('avance_id','1')->get();
+       
+      
         //Calculando cantidad de dias entre fechas de cada hito
         $conformacion_total = Carbon::parse($this->input_conformacion_i)->diffInDays(Carbon::parse($this->input_conformacion_f));
         $recopilacion_total = Carbon::parse($this->input_recopilacion_i)->diffInDays(Carbon::parse($this->input_recopilacion_f));
@@ -104,7 +116,6 @@ class GestionAsignacion extends Component
         $divulgacion_total = Carbon::parse($this->input_divulgacion_i)->diffInDays(Carbon::parse($this->input_divulgacion_f));
         $carga_total = Carbon::parse($this->input_carga_i)->diffInDays(Carbon::parse($this->input_carga_f));
 
-        //Guardando en bdd
         $asignacion->user_id = $this->usuario_id;
         $asignacion->objestrategico_id = $this->objestrategicos_id;
         $asignacion->objtactico_id = $this->objtacticos_id;
@@ -120,17 +131,30 @@ class GestionAsignacion extends Component
         $asignacion->plan_dias_inf = $inf_total;
         $asignacion->plan_dias_divulgacion = $divulgacion_total;
         $asignacion->plan_dias_carga = $carga_total;
+        $asignacion->anoreporte_id = $ano_reporte->id;
         $asignacion->save();
 
-
-        //$ultima_asignacion = Asignacion::latest('id')->first()->id;
         $ultima_asignacion = $asignacion->id;
-        $avance->avance_plan = '0';
-        $avance->avance_real = '0';
-        $avance->avance_desviacion = '0';
-        $avance->avance_cumplimiento = '0';
+        $avance->avance_plan = '1';
+        $avance->avance_real = '1';
+        $avance->avance_desviacion = '1';
+        $avance->avance_cumplimiento = '1';
         $avance->asignacion_id = $ultima_asignacion;
         $avance->save();
+
+        if($reportegeneral){
+            $reportegeneral->update(['reporte_plan' => '1', 'reporte_real' => '1','reporte_desviacion' => '1', 'reporte_cumplimiento' => '1']);
+        }
+        else{
+            $reporte = new Reportegeneral();
+            $reporte->reporte_plan = '1';
+            $reporte->reporte_real = '1';
+            $reporte->reporte_desviacion = '1';
+            $reporte->reporte_cumplimiento = '1';
+            $reporte->avance_id = '1';
+            $reporte->save();
+        }
+
         $this->reset(['objestrategicos_id','objtacticos_id','objoperacionals_id','input_conformacion_i','input_recopilacion_i','input_inf_i','input_divulgacion_i','input_carga_i','region_id','division_id','negocio_id','input_conformacion_f','input_recopilacion_f','input_inf_f','input_divulgacion_f','input_carga_f','usuario_id']);
         $this->emit('alert');
 

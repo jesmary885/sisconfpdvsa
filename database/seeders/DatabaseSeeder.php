@@ -22,6 +22,9 @@ class DatabaseSeeder extends Seeder
         $this->call(ObjestrategicoSeeder::class);
         $this->call(ObjtacticoSeeder::class);
         $this->call(ObjoperacionalSeeder::class);
+        $this->call(ReportedivisionSeeder::class);
+        $this->call(ReportenegocioSeeder::class);
+        $this->call(AnoreporteSeeder::class);
    
     }
 }
