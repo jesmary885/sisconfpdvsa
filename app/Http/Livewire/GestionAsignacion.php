@@ -106,7 +106,7 @@ class GestionAsignacion extends Component
 
         $asignacion = new Asignacion();
         $avance = new Avance();
-        $reportegeneral = Reportegeneral::where('avance_id','1')->get();
+        $reportegeneral = Reportegeneral::where('avance_id','1')->first();
        
       
         //Calculando cantidad de dias entre fechas de cada hito
@@ -143,7 +143,7 @@ class GestionAsignacion extends Component
         $avance->save();
 
         if($reportegeneral){
-            $reportegeneral->update(['reporte_plan' => '1', 'reporte_real' => '1','reporte_desviacion' => '1', 'reporte_cumplimiento' => '1']);
+            $reportegeneral->update(['reporte_plan' => '1', 'reporte_real' => '1','reporte_desviacion' => '1', 'reporte_cumplimiento' => '1','division_id' => '1','region_id' => '1']);
         }
         else{
             $reporte = new Reportegeneral();
@@ -151,6 +151,8 @@ class GestionAsignacion extends Component
             $reporte->reporte_real = '1';
             $reporte->reporte_desviacion = '1';
             $reporte->reporte_cumplimiento = '1';
+            $reporte->division_id = '1';
+            $reporte->region_id = '1';
             $reporte->avance_id = '1';
             $reporte->save();
         }

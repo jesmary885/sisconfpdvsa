@@ -10,16 +10,15 @@ use App\Models\Region;
 use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Exports\AsignacionsExport;
+use App\Exports\RegionsExport;
 use App\Models\Reportegeneral;
 use Maatwebsite\Excel\Facades\Excel;
 
+
 class RegionsController extends Controller
 {
-    public function index(Region $region,Anoreporte $anoreporte){
 
-        // $region = $region;
-        // $ano = $anore
+    public function index(Region $region,Anoreporte $anoreporte){
 
         $anoreporteid = $anoreporte->id;
         $regionid = $region->id;
@@ -87,7 +86,7 @@ class RegionsController extends Controller
             $desviacion_r = ($plan_total_r) - ($real_total_r);
             $cumplimiento_r = (($real_total_r) / ($plan_total_r)) * 100;
             $reportegeneral = Reportegeneral::where('avance_id','1')->first();
-            $reportegeneral->update(["reporte_plan" => $plan_total_r, "reporte_real" => $real_total_r,"reporte_desviacion" => $desviacion_r, "reporte_cumplimiento" => $cumplimiento_r]);
+            $reportegeneral->update(["reporte_plan" => $plan_total_r, "reporte_real" => $real_total_r,"reporte_desviacion" => $desviacion_r, "reporte_cumplimiento" => $cumplimiento_r, "region_id" => $regionid]);
      
         } else{
             $plan_total_r = 1;
@@ -100,6 +99,8 @@ class RegionsController extends Controller
 
     public function exportExcel()
     {
-    	return Excel::download(new AsignacionsExport, 'ReporteGeneral.xlsx');
+      
+    	return Excel::download(new RegionsExport, 'ReporteRegion.xlsx');
+        //return (new AsignacionsExport($this->region_idd))->download('ReporteGeneral.xlsx');
     }
 }

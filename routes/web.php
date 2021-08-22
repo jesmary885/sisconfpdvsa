@@ -13,6 +13,7 @@ use App\Http\Livewire\Reportes\NegociosReporte;
 use App\Http\Livewire\Reportes\ObjoperacionalsReporte;
 use App\Http\Livewire\Reportes\ObjestrategicosReporte;
 use App\Http\Livewire\Reportes\ObjtacticosReporte;
+use App\Http\Livewire\Users\ChangePass;
 
 
 
@@ -33,8 +34,9 @@ Route::get('/home', GestionAvance::class)->name('home.avance');
 
 Route::resource('asignacion', AsignacionController::class)->only('edit','update')->names('asignacions');
 
-Route::get('user/update/password', [App\Http\Controllers\UserPasswordController::class, 'showForm'])->name('user.updatepass');
-Route::post('user/update/password', [App\Http\Controllers\UserPasswordController::class, 'update']);
+//Route::get('cambiar_contrasena', ChangePass::class)->name('user.updatepass');
+Route::get('cambiar_contrasena', [App\Http\Controllers\UserPasswordController::class, 'showForm'])->name('user.updateform');
+Route::post('cambiar_contrasena', [App\Http\Controllers\UserPasswordController::class, 'update'])->name('user.updatepass');
 
 Route::get('consultas', [App\Http\Controllers\AsignacionConsultaController::class, 'index'])->name('consultas');
 Route::post('consultas', [App\Http\Controllers\AsignacionConsultaController::class, 'buscar'])->name('consultas.buscar');

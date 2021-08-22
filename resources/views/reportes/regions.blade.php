@@ -13,6 +13,7 @@
             <p class="text-gray-500 text-md font-bold bg-white text-center rounded shadow-lg border h-8"> REPORTE GENERAL</p>
 
             <div class="card">
+                @if ($divisions->count())
                 <div class="card-body">
                     <table class="table table-striped w-full">
                         <thead>
@@ -82,11 +83,17 @@
                             </tbody>
                         </table>
                     </div>
+                    @else
+                    <div class="px-6 py-4">
+                        No hay ningún registro coincidente
+                    </div>
+                @endif
+               
                 </div>
             </div>
 
-            <div class="py-4">
-                <a href="{{url('consultas_regiones/export-excel')}}" class="text-blue-600 font-bold hover:text-blue-900">Exportar a excel</a>
+            <div class="px-8 py-4 text-right w-full">
+                <a href="{{url('consultas_regiones/export-excel')}}" class="text-red-600 text-lg font-bold hover:text-blue-900">Exportar a excel</a>
             </div>
  
 @stop

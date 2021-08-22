@@ -20,6 +20,8 @@ class CreateReportegeneralsTable extends Migration
             $table->integer('reporte_real');
             $table->integer('reporte_desviacion');
             $table->integer('reporte_cumplimiento');
+            $table->integer('region_id');
+            $table->integer('division_id');
             $table->unsignedBigInteger('avance_id');
             $table->foreign('avance_id')->references('id')->on('avances');
         });
