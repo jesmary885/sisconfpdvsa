@@ -16,26 +16,25 @@ class AsignacionConsultaController extends Controller
         $tiporeporte = $request["categoria"];
 
         if($tiporeporte==1){
-         
-            return view('reportes.usuarios');
+            return redirect()->route('listado.usuario');
         }
         if($tiporeporte==2){
-            return view('reportes.regions_listado');
+            return redirect()->route('listado.region');
         }
         if($tiporeporte==3){
-            return view('reportes.divisions');
+            return redirect()->route('listado.division');
         }
         if($tiporeporte==4){
-            return view('reportes.negocios');
+            return redirect()->route('listado.negocio');
         }
         if($tiporeporte==5){
-            return view('reportes.objestrategicos');
+            return redirect()->route('listado.objestrategicos');
         }
         if($tiporeporte==6){
-            return view('reportes.objtacticos');
+            return redirect()->route('listado.objtacticos');
         }
         if($tiporeporte==7){
-            return view('reportes.objoperacionals');
+            return redirect()->route('listado.objoperacionals');
         }
     }
 }

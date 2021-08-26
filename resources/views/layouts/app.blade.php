@@ -98,14 +98,32 @@
     </div>
     @livewireScripts
 
-    <script>
+   <script>
         livewire.on('alert', function(){
             Swal.fire(
                 'Asignacion registrada!',
                 '',
                 'success')
         })
-    </script>
+
+        livewire.on('alertShangePass', function(){
+            Swal.fire(
+                'Se ha cambiado la contraseña!',
+                '',
+                'success')
+        })
+
+        livewire.on('alertErrorShangePass', function(){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'La contraseña actual no es correcta, intentelo de nuevo!',
+                    footer: ''
+                    })
+        })
+
+     
+    </script> 
 
     @stack('script')
 </body>

@@ -143,7 +143,7 @@ class GestionAsignacion extends Component
         $avance->save();
 
         if($reportegeneral){
-            $reportegeneral->update(['reporte_plan' => '1', 'reporte_real' => '1','reporte_desviacion' => '1', 'reporte_cumplimiento' => '1','division_id' => '1','region_id' => '1']);
+            $reportegeneral->update(['reporte_plan' => '1', 'reporte_real' => '1','reporte_desviacion' => '1', 'reporte_cumplimiento' => '1','division_id' => '1','region_id' => '1','negocio_id' => '1', 'usuario_id' => '1', 'anoreporte_id' => '1']);
         }
         else{
             $reporte = new Reportegeneral();
@@ -154,12 +154,14 @@ class GestionAsignacion extends Component
             $reporte->division_id = '1';
             $reporte->region_id = '1';
             $reporte->avance_id = '1';
+            $reporte->usuario_id = '1';
+            $reporte->negocio_id = '1';
+            $reporte->anoreporte_id = '1';
             $reporte->save();
         }
 
         $this->reset(['objestrategicos_id','objtacticos_id','objoperacionals_id','input_conformacion_i','input_recopilacion_i','input_inf_i','input_divulgacion_i','input_carga_i','region_id','division_id','negocio_id','input_conformacion_f','input_recopilacion_f','input_inf_f','input_divulgacion_f','input_carga_f','usuario_id']);
         $this->emit('alert');
-
     }
 }
 

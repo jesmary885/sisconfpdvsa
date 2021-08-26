@@ -2,6 +2,12 @@
 
 @section('content')
 
+@if (session('info'))
+<div class="alert alert-success">
+    <strong>{{session('info')}}</strong>
+</div>
+@endif
+
    <x-authentication-card>
         <x-slot name="logo">
             <x-authentication-card-logo/>

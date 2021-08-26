@@ -1,7 +1,24 @@
 <div >
     <x-table-responsive>
 
-        <div>
+        <div class="flex items-center">
+            <p class="text-gray-500 text-lg font-bold text-center ml-2">Corte del año:</p>
+              {{-- <select wire:model="ano_id" class="w-52 form-control h-8 text-m text-center ml-4">
+                    <option value="" selected>Seleccionar año</option>
+                    @foreach ($anos as $ano)
+                    <option value="{{$ano->id}}">{{$ano->ano}}</option>
+                    @endforeach
+            </select> --}}
+
+            <select wire:model="ano_id" class="w-52 form-control h-8 text-m text-center ml-4">
+                <option value="" selected>Seleccionar año</option>
+                @foreach ($anos as $ano)
+                <option value="{{$ano->id}}">{{$ano->ano}}</option>
+                @endforeach
+            </select> 
+        </div>  
+
+        <div class="pt-4">
 
             <x-input type="text" 
                 wire:model="search" 
@@ -30,8 +47,9 @@
                             <td class="text-center">
                                     {{$negocio->name}}
                             </td>
-                            <td >                           
-                                <a href="{{route('reporte.negocio',$negocio)}}" class="text-blue-600 font-bold hover:text-blue-900">Reporte</a>
+                            <td >
+                                <a href="{{route('reporte.negocio', ['negocio' => $negocio, 'anoreporte' => $anor])}}" class="text-blue-600 font-bold hover:text-blue-900">Reporte</a>                                               
+                                {{-- <a href="{{route('reporte.negocio',$negocio)}}" class="text-blue-600 font-bold hover:text-blue-900">Reporte</a> --}}
                             </td>
                         </tr>
 

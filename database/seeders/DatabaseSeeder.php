@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ReportedivisionSeeder::class);
         $this->call(ReportenegocioSeeder::class);
         $this->call(AnoreporteSeeder::class);
+        $this->call(ReporteusuarioSeeder::class);
    
     }
 }

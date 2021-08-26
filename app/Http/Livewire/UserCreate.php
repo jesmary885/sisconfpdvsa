@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Division;
 use App\Models\Region;
+use App\Models\Reporteusuario;
 use App\Models\User;
 use Livewire\Component;
 use Illuminate\Support\Facades\Hash;
@@ -64,8 +65,13 @@ class UserCreate extends Component
         $usuario->negocio_id = $this->negocio_id;
         $usuario->save();
 
+        $reporte_usuario = new Reporteusuario();
+
+        $reporte_usuario->real = 0;
+        $reporte_usuario->plan = 0;
+        $reporte_usuario->user_id = $usuario->id;
+        $reporte_usuario->save();
       
-       //return view('livewire.user-create')->with('info','se ha creado el usuario correctamente');
         $this->reset(['nombre','apellido','cedula','division_id','negocio_id','region_id','email','telefono','indicador']);
        
    

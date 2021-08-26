@@ -69,5 +69,10 @@ class User extends Authenticatable
         return $this->hasMany(Asignacion::class);
     }
 
+    //Relación uno a uno
+    public function reporteusuario(){
+        return $this->hasOne(Reporteusuario::class);
+    }
+
 
 }

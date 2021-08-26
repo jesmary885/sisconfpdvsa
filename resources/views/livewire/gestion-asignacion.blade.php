@@ -1,6 +1,4 @@
 <div class="container">
- 
-
     <p class=" text-gray-500 text-lg font-bold">Registro de Asignación</p>
 
     {{--Objetivo Estrategico--}}
@@ -20,7 +18,6 @@
             </div>
     </div>
     
-
       {{--Objetivo Estrategico--}}
       <div class="grid grid-cols-4">
         <div class="items-center pr-4">
@@ -35,11 +32,7 @@
                     @endforeach
                 </select>
             </div>
-       
-
       </div>
-
-      
 
      {{--Objetivo Operacional--}}
      <div class="grid grid-cols-4">
@@ -137,12 +130,6 @@
             </div>
      </div> 
 
-     @if ($saved)
-            <script type="text/javascript"> 
-            window.alert("La asignacion se ha registrado correctamente");
-            </script>
-    @endif
-
       {{--Region--}}
 
     <div class="grid grid-cols-4">
@@ -214,6 +201,5 @@
                 Cargar Asignación
             </x-button>
         </div>
-
 
 </div>

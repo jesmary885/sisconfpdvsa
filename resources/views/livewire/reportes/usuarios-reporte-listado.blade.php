@@ -1,14 +1,22 @@
 <div >
         <x-table-responsive>
+            <div class="flex items-center">
+                <p class="text-gray-500 text-lg font-bold text-center ml-2">Corte del año:</p>    
+                <select wire:model="ano_id" class="w-52 form-control h-8 text-m text-center ml-4">
+                    <option value="" selected>Seleccionar año</option>
+                    @foreach ($anos as $ano)
+                    <option value="{{$ano->id}}">{{$ano->ano}}</option>
+                    @endforeach
+                </select> 
+            </div>    
 
-            <div>
-
+            <div class="pt-4">
                 <x-input type="text" 
                     wire:model="search" 
                     class="w-full h-12 px-2 mb-4 font-semibold"
                     placeholder="Ingrese el nombre o indicador del usuario a buscar" />
-
             </div>
+
             <div class="card">
             @if ($users->count())
             <div class="card-body">
@@ -34,8 +42,9 @@
                                 <td class="text-center">
                                         {{$user->email}} 
                                 </td>
-                                <td >                           
-                                    <a href="{{route('reporte.usuario',$user)}}" class="text-blue-600 font-bold hover:text-blue-900">Reporte</a>
+                                <td >      
+                                    <a href="{{route('reporte.usuario', ['usuario' => $user, 'anoreporte' => $anor])}}" class="text-blue-600 font-bold hover:text-blue-900">Reporte</a>                     
+                                    {{-- <a href="{{route('reporte.usuario',$user)}}" class="text-blue-600 font-bold hover:text-blue-900">Reporte</a> --}}
                                 </td>
                             </tr>
 

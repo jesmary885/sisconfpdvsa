@@ -50,32 +50,44 @@
     <nav id="navigation-menu" class="bg-white h-full w-full absolute">
         <div class="container h-full w-full">
             @can('asignacion.registro_asignacion')
-            <div class="grid grid-cols-4 gap-6 h-full w-full ">
-                <div class="p-6 h-full w-full bg-gradient-to-b from-gray-100 rounded shadow-lg">
-                    <h2 class="text-red-500 text-lg font-bold ">Gestión de asignación</h2>
-                    <ul class="p-2">
-                        <li class="navigation-link text-gray-500 hover:bg-TrueGray-200 hover:text-red-500"> <a href="#">Cargar asignación</li>
-                        <li class="navigation-link text-gray-500 hover:bg-TrueGray-200 hover:text-red-500"> <a href="{{route('consultas')}}">Consultar Asignación</a> </li>
-                    </ul>
-
-                    <h2 class="text-red-500 text-lg font-bold mt-6 ">Gestión de usuario</h2>
-                    <ul class="p-2">
-                        <li class="navigation-link text-gray-500 hover:bg-TrueGray-200 hover:text-red-500"> <a href="{{route('user.updateform')}}">Cambiar contraseña</a> </li>
-                    </ul>
-                </div>
-                    <div class="col-span-3 py-6 px-0 h-full bg-gradient-to-b from-gray-200 rounded shadow-lg">
-                        @livewire('gestion-asignacion')
+                <div class="grid grid-cols-4 gap-6 h-full w-full ">
+                    <div class="p-6 h-full w-full bg-gradient-to-b from-gray-100 rounded shadow-lg">
+                        <h2 class="text-red-500 text-lg font-bold ">Gestión de asignación</h2>
+                        <ul class="p-2"> 
+                            <li class="navigation-link text-gray-500 hover:bg-TrueGray-200 hover:text-red-500"> <a href="{{route('home.asignacion')}}">Cargar asignación</li>
+                            <li class="navigation-link text-gray-500 hover:bg-TrueGray-200 hover:text-red-500"> <a href="{{route('consultas')}}">Consultar Asignación</a> </li>
+                        </ul>
+                        <h2 class="text-red-500 text-lg font-bold mt-6 ">Gestión de usuario</h2>
+                        <ul class="p-2">
+                            <li class="navigation-link text-gray-500 hover:bg-TrueGray-200 hover:text-red-500">
+                                @livewire('users.change-pass')
+                            </li>
+                        </ul>
                     </div>
-               
-            </div>
+                        <div class="col-span-3 py-6 px-0 h-full bg-gradient-to-b from-gray-200 rounded shadow-lg">
+                            @livewire('gestion-asignacion')
+                        </div>
+                </div>
             @endcan
             @can('avances.registro')
-            <div class="p-6 h-full w-full bg-gradient-to-b from-gray-100 rounded shadow-lg">
-                @livewire('gestion-avance')
-            </div>
+                <div class="grid grid-cols-4 gap-6 h-full w-full ">
+                    <div class="p-6 h-full w-full bg-gradient-to-b from-gray-100 rounded shadow-lg">
+                        <h2 class="text-red-500 text-lg font-bold ">Gestión de avances</h2>
+                        <ul class="p-2">
+                            <li class="navigation-link text-gray-500 hover:bg-TrueGray-200 hover:text-red-500"> <a href="{{route('home.avance')}}">Registrar avance</li>
+                        </ul>
+                        <h2 class="text-red-500 text-lg font-bold mt-6 ">Gestión de usuario</h2>
+                        <ul class="p-2">
+                            <li class="navigation-link text-gray-500 hover:bg-TrueGray-200 hover:text-red-500">
+                                @livewire('users.change-pass')
+                            </li>
+                        </ul>
+                    </div>
+                        <div class="col-span-3 py-6 px-0 h-full bg-gradient-to-b from-gray-200 rounded shadow-lg">
+                            @livewire('gestion-avance')
+                        </div>
+                </div>
             @endcan
-
-
         </div>
     </nav>
 </header>
