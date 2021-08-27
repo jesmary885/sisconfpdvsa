@@ -45,7 +45,7 @@ Route::get('consultas_negocios/{negocio}/{anoreporte}', [App\Http\Controllers\Re
 Route::get('listado_negocio', [App\Http\Controllers\Reportes\NegociosController::class, 'show'])->name('listado.negocio');
 Route::get('consultas_objoperacional/{objoperacional}/{anoreporte}', [App\Http\Controllers\Reportes\ObjOperacionalsController::class, 'index'])->name('reporte.objoperacional');
 Route::get('listado_objoperacional', [App\Http\Controllers\Reportes\ObjOperacionalsController::class, 'show'])->name('listado.objoperacional');
-Route::get('consultas_objestrategico/{objestrategico}/{anoreporte}', [App\Http\Controllers\Reportes\ObEstrategicossController::class, 'index'])->name('reporte.objestrategico');
+Route::get('consultas_objestrategico/{objestrategico}/{anoreporte}', [App\Http\Controllers\Reportes\ObjEstrategicosController::class, 'index'])->name('reporte.objestrategico');
 Route::get('listado_objestrategico', [App\Http\Controllers\Reportes\ObjEstrategicosController::class, 'show'])->name('listado.objestrategico');
 Route::get('consultas_objtactico/{objtactico}/{anoreporte}', [App\Http\Controllers\Reportes\ObjTacticosController::class, 'index'])->name('reporte.objtactico');
 Route::get('listado_objtactico', [App\Http\Controllers\Reportes\ObjTacticosController::class, 'show'])->name('listado.objtactico');
@@ -57,4 +57,7 @@ Route::get('consultas_regiones/export-excel', [App\Http\Controllers\Reportes\Reg
 Route::get('consultas_usuarios/export-excel', [App\Http\Controllers\Reportes\UsuariosController::class, 'exportExcel']);
 Route::get('consultas_divisiones/export-excel', [App\Http\Controllers\Reportes\DivisionsController::class, 'exportExcel']);
 Route::get('consultas_negocios/export-excel', [App\Http\Controllers\Reportes\NegociosController::class, 'exportExcel']);
+Route::get('consultas_objestrategicos/export-excel', [App\Http\Controllers\Reportes\ObjEstrategicosController::class, 'exportExcel']);
+Route::get('consultas_objtacticos/export-excel', [App\Http\Controllers\Reportes\ObjTacticosController::class, 'exportExcel']);
+Route::get('consultas_objoperacionals/export-excel', [App\Http\Controllers\Reportes\ObjOperacionalsController::class, 'exportExcel']);
 

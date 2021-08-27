@@ -12,7 +12,7 @@
 @endif
 <div class="card">
     <div class="card-body">
-        {!! Form::model($division, ['route' => ['admin.negocios.update', $division],'method' => 'put']) !!}
+        {!! Form::model($negocio, ['route' => ['admin.negocios.update', $negocio],'method' => 'put']) !!}
             <div class="form-group">
                 {!! Form::label('name','Nombre') !!}
                 {!! Form::text('name',null,['class' => 'form-control','placeholder' => 'Ingrese el nombre del negocio']) !!}
@@ -23,7 +23,7 @@
 
             <div class="form-group">
                 {!! Form::label('division_id', 'División:') !!}
-                {!! Form::select('division_id', $regions, null, ['class' => 'form-control']) !!}
+                {!! Form::select('division_id', $divisions, null, ['class' => 'form-control']) !!}
                 @error('division_id')
                     <small class="text-danger">{{$message}}</small>
                 @enderror

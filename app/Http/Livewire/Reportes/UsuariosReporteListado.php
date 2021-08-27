@@ -11,10 +11,9 @@ class UsuariosReporteListado extends Component
 {
 
     public $anos;
-    public $ano_id, $ano_idd;
-
+    public $ano_id; 
+    public $ano_idd = "0";
     use WithPagination;
-
     public $search;
     public $pSelectAno;
 
@@ -30,6 +29,7 @@ class UsuariosReporteListado extends Component
     public function updatedAnoId($value)
     {
         $this->ano_idd = Anoreporte::find($value);
+      
     }
 
     public function render()
@@ -37,6 +37,7 @@ class UsuariosReporteListado extends Component
 
         $this->anos=Anoreporte::all();
         $anor = $this->ano_idd;
+   
 
         $users = User::where('name', 'LIKE', '%' . $this->search . '%')
                     ->orwhere('email', 'LIKE', '%' . $this->search . '%')

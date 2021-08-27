@@ -53,6 +53,9 @@
                             <div class="card-body">
                                 <strong>La división seleccionada no tiene asignaciones registradas</strong>
                             </div>
+                            <div class="p-4">
+                                <a href="{{route('listado.division')}}" class="text-gray-600 text-lg font-bold hover:text-red-600 text">Regresar</a>
+                            </div>
                          @else
                             <div class="card">
                                 <div class="card-body">
@@ -117,6 +120,7 @@
                     <div class="px-6 py-4">
                         No hay negocios registradas con la división seleccionada
                     </div>
+                   
                 @endif
             </div>
 @stop

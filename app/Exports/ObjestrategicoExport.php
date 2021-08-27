@@ -3,15 +3,19 @@
 namespace App\Exports;
 
 use App\Models\Objestrategico;
+use App\Models\Reportegeneral;
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\FromView;
+use Illuminate\Contracts\View\View;
 
-class ObjestrategicoExport implements FromCollection
+class ObjestrategicoExport implements FromView
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function collection()
-    {
-        return Objestrategico::all();
-    }
+    public function view(): View
+	{
+		$reporte = Reportegeneral::where('avance_id','1')->first();
+		
+		return view('exportexcel.objestrategicos', ['reporte' => $reporte]);
+	}
 }
+
+

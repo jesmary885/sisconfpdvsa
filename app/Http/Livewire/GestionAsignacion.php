@@ -135,10 +135,10 @@ class GestionAsignacion extends Component
         $asignacion->save();
 
         $ultima_asignacion = $asignacion->id;
-        $avance->avance_plan = '1';
-        $avance->avance_real = '1';
-        $avance->avance_desviacion = '1';
-        $avance->avance_cumplimiento = '1';
+        $avance->avance_plan = '0';
+        $avance->avance_real = '0';
+        $avance->avance_desviacion = '0';
+        $avance->avance_cumplimiento = '0';
         $avance->asignacion_id = $ultima_asignacion;
         $avance->save();
 

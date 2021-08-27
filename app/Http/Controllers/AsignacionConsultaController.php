@@ -28,13 +28,13 @@ class AsignacionConsultaController extends Controller
             return redirect()->route('listado.negocio');
         }
         if($tiporeporte==5){
-            return redirect()->route('listado.objestrategicos');
+            return redirect()->route('listado.objestrategico');
         }
         if($tiporeporte==6){
-            return redirect()->route('listado.objtacticos');
+            return redirect()->route('listado.objtactico');
         }
         if($tiporeporte==7){
-            return redirect()->route('listado.objoperacionals');
+            return redirect()->route('listado.objoperacional');
         }
     }
 }

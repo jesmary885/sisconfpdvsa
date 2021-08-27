@@ -33,10 +33,12 @@ class ObjtacticosReporteListado extends Component
     }
     public function render()
     {
+        $this->anos=Anoreporte::all();
+        $anor = $this->ano_idd;
         $objtacticos = Objtactico::where('description', 'LIKE', '%' . $this->search . '%')
         ->paginate(5);
 
-        return view('livewire.reportes.objtacticos-reporte-listado',compact('objtacticos'));
+        return view('livewire.reportes.objtacticos-reporte-listado',compact('objtacticos','anor'));
     }
 
     public function updatedPage(){

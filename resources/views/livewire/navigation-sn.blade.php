@@ -1,8 +1,8 @@
 <header class="bg-white h-full sticky top-0 z-50">
     {{--Menu superior--}}
     <div class="container flex items-center h-32">
-         {{--Logo PDVSA--}}
-         <x-logo/>
+        {{--Logo PDVSA--}}
+        <x-logo/>
         {{--Franja roja con nombre del sistema--}}
         <div class="flex-1 px-2">
             <h1 class="bg-gradient-to-l from-red-600 text-right rounded-lg text-white px-2 rounded shadow-lg">
@@ -68,7 +68,6 @@
                     <main>
                     @yield('content')
                     </main>
-
                 </div>
             </div>
         </div>
