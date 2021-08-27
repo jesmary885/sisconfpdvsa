@@ -32,12 +32,14 @@
                                         <td class="py-2 text-center">{{round($real_total_r,2) ?? '-'}} %</td>
                                         <td class="py-2 text-center">{{round($plan_total_r,2) ?? '-'}} %</td>
                                         <?php 
-                                            if( $desviacion_r >=1 && $desviacion_r <=9){
-                                                $colord = 'orange';
-                                            }else if($desviacion_r >=10) {
-                                                $colord = 'red';
-                                            }else if($desviacion_r <=1) {
+                                            if ($desviacion_r <=1) {
                                                 $colord = 'green';
+                                            }
+                                            elseif($desviacion_r >=2 || $desviacion_r <=10){
+                                                $colord = 'orange';
+                                            }
+                                            else {
+                                                $colord = 'red';
                                             }
                                         ?>
                                         <td class="text-center font-bold" style ="color: {{$colord}}"> {{round($desviacion_r),2}} % </td>
@@ -80,12 +82,14 @@
                                                         else{
                                                             $desviacion_d = ($division->reportedivision->plan) - ($division->reportedivision->real);
                                                             $cumplimiento_d = (($division->reportedivision->real) / ($division->reportedivision->plan)) * 100;
-                                                            if( $desviacion_d >=1 && $desviacion_d <=9){
-                                                                $colord_d = 'orange';
-                                                            }else if($desviacion_d >=10) {
-                                                                $colord_d = 'red';
-                                                            }else if($desviacion_d <=1) {
+                                                            if ($desviacion_d <=1) {
                                                                 $colord_d = 'green';
+                                                            }
+                                                            elseif($desviacion_d >=2 || $desviacion_d <=10){
+                                                                $colord_d = 'orange';
+                                                            }
+                                                            else {
+                                                                $colord_d = 'red';
                                                             }
                                                         }
                                                     ?>

@@ -29,12 +29,14 @@
                             <td class="py-2 text-center">{{round($real_total,2) ?? '-'}} %</td>
                             <td class="py-2 text-center">{{round($plan_total,2) ?? '-'}} %</td>
                                 <?php 
-                                    if( $desviacion >=1 && $desviacion <=9){
-                                        $colord = 'orange';
-                                    }else if($desviacion >=10) {
-                                         $colord = 'red';
-                                    }else if($desviacion <=1) {
+                                   if ($desviacion <=1) {
                                         $colord = 'green';
+                                    }
+                                    elseif($desviacion >=2 || $desviacion <=10){
+                                        $colord = 'orange';
+                                    }
+                                    else {
+                                        $colord = 'red';
                                     }
                                 ?>
                             <td class="text-center font-bold" style ="color: {{$colord}}"> {{round($desviacion),2}} % </td>

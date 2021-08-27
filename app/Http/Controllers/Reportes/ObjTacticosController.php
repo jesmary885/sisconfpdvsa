@@ -14,15 +14,14 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ObjTacticosController extends Controller
 {
-
     public function index(Objtactico $objtactico,Anoreporte $anoreporte){
 
         $anoreporteid = $anoreporte->id;
         $objtacticoid = $objtactico->id;
         $fecha_actual = date('Y-m-d');
 
-                $asignacions = Asignacion::where('objtactico_id',$objtacticoid)
-                                        ->where('anoreporte_id',$objtacticoid)->get();
+        $asignacions = Asignacion::where('objtactico_id',$objtacticoid)
+                                    ->where('anoreporte_id',$anoreporteid)->get();
 
                 $plan_fecha_hoy_obj = 0;
                 $real_total_asignacion = 0;
@@ -51,6 +50,7 @@ class ObjTacticosController extends Controller
                     $asignacion_cont_d = $asignacion_cont_d + 1;
                     $cont1 = $cont1 + 1;
                 }
+             
                 if ($cont1 > 0){
                     $plan_total = $plan_fecha_hoy_obj / $asignacion_cont_d;
                     $real_total = $real_total_asignacion / $asignacion_cont_d;

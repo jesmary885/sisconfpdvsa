@@ -25,6 +25,11 @@ class ReporteusuarioSeeder extends Seeder
                 'plan' => '0',
                 'user_id' => '2',
             ],
+            [
+                'real' => '0',
+                'plan' => '0',
+                'user_id' => '3',
+            ],
         ];
 
         foreach ($usuarios as $usuario) {

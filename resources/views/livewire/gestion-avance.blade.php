@@ -16,17 +16,19 @@
                     <tbody>
                          @foreach ($asignacions as $asignacion)
                             <tr class="py-2 border">
-                                <td class="py-4 pr-4 pl-6">{{$asignacion->objoperacional->description}} %</td>
+                                <td class="py-4 pr-4 pl-6">{{$asignacion->objoperacional->description}} </td>
                                 <td class="py-2 pl-4">{{round($asignacion->avance->avance_real,2) ?? '-'}} %</td>
                                 <td class="py-2 pl-8">{{round($asignacion->avance->avance_plan,2) ?? '-'}} %</td>
                                 <?php $desviacion = ($asignacion->avance->avance_plan) - ($asignacion->avance->avance_real);
-                                        if( $desviacion >=1 && $desviacion <=9){
-                                            $colord = 'orange';
-                                        }else if($desviacion >=10) {
-                                            $colord = 'red';
-                                        }else if($desviacion <=1) {
-                                            $colord = 'green';
-                                        }
+                                        if ($desviacion <=1) {
+                                                $colord = 'green';
+                                            }
+                                            elseif($desviacion >=2 || $desviacion <=10){
+                                                $colord = 'orange';
+                                            }
+                                            else {
+                                                $colord = 'red';
+                                            }
                                         ?>
                                 
                                         <td class="py-2 pl-8 font-bold" style ="color: {{$colord}}"> {{round(($asignacion->avance->avance_plan) - ($asignacion->avance->avance_real)),2}} % </td>

@@ -7,6 +7,7 @@
 @stop
 
 @section('content')
+
     <p class="text-gray-500 text-md font-bold bg-white text-center rounded shadow-lg border h-8"> REPORTE GENERAL</p>
     <div class="card">
         @if ($asignacions->count())
@@ -25,12 +26,14 @@
                             <td class="py-2 text-center">{{round($real_usuario_d,2) ?? '-'}} %</td>
                             <td class="py-2 text-center">{{round($plan_usuario_d,2) ?? '-'}} %</td>
                             <?php 
-                                if( $desviacion_usuario_d >=1 && $desviacion_usuario_d <=9){
-                                    $colord = 'orange';
-                                }else if($desviacion_usuario_d >=10) {
-                                    $colord = 'red';
-                                }else if($desviacion_usuario_d <=1) {
+                                if ($desviacion_usuario_d <=1) {
                                     $colord = 'green';
+                                }
+                                elseif($desviacion_usuario_d >=2 || $desviacion_usuario_d <=10){
+                                    $colord = 'orange';
+                                }
+                                else {
+                                    $colord = 'red';
                                 }
                             ?>
                             <td class="text-center font-bold" style ="color: {{$colord}}"> {{round($desviacion_usuario_d),2}} % </td>
@@ -60,12 +63,14 @@
                                         <td class="py-2 pl-4">{{round($asignacion->avance->avance_real,2) ?? '-'}} %</td>
                                         <td class="py-2 pl-8">{{round($asignacion->avance->avance_plan,2) ?? '-'}} %</td>
                                         <?php $desviacion = ($asignacion->avance->avance_plan) - ($asignacion->avance->avance_real);
-                                            if( $desviacion >=1 && $desviacion <=9){
-                                                $colord = 'orange';
-                                            }else if($desviacion >=10) {
-                                                $colord = 'red';
-                                            }else if($desviacion <=1) {
+                                            if ($desviacion <=1) {
                                                 $colord = 'green';
+                                            }
+                                            elseif($desviacion >=2 || $desviacion <=10){
+                                                $colord = 'orange';
+                                            }
+                                            else {
+                                                $colord = 'red';
                                             }
                                         ?>
                                         <td class="py-2 pl-8 font-bold" style ="color: {{$colord}}"> {{round(($asignacion->avance->avance_plan) - ($asignacion->avance->avance_real)),2}} % </td>
