@@ -64,7 +64,6 @@ class UsuariosController extends Controller
             }
 
             return view('reportes.usuarios',compact('plan_usuario_d','real_usuario_d','desviacion_usuario_d','cumplimiento_usuario_d','asignacions'));
-        }
     }
 
     public function exportExcel()
