@@ -23,6 +23,7 @@ class DivisionsController extends Controller
         $divisionid = $division->id;
         $fecha_actual = date('Y-m-d');
         $negocios = Negocio::where('division_id',$divisionid)->get();
+        $negociospaginate = Negocio::where('division_id',$divisionid)->paginate(2);
         //$reportegeneral = Reportegeneral::where('avance_id','1')->get();
         $negocio_total = 0;
         $plan_total_dr = 0;
@@ -78,6 +79,10 @@ class DivisionsController extends Controller
                 $negocio->reportenegocio->update(['plan' => $plan_total_d,'real' => $real_total_d]);
                 $negocio_total = $negocio_total + 1;
             }
+
+            $puntos[]= ['name' => $negocio['name'] , 'y' => $negocio->reportenegocio['real']];
+            $data = json_encode($puntos);
+
         }
         if($negocio_total > 0){
             $plan_total_r = $plan_total_dr / $negocio_total;
@@ -95,7 +100,7 @@ class DivisionsController extends Controller
             $reportegeneral = 1;
 
         }
-        return view('reportes.divisions',compact('plan_total_r','real_total_r','desviacion_r','cumplimiento_r','negocios','anoreporteid','reportegeneral'));
+        return view('reportes.divisions',compact('plan_total_r','real_total_r','desviacion_r','cumplimiento_r','negocios','anoreporteid','reportegeneral','data','negociospaginate'));
 
     }
 

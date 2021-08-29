@@ -32,17 +32,30 @@
     {{--JQuery--}}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head>
-<body>
-<div id="inicio2">
-   
-    @yield('content-header')
-    @livewire('navigation-sn')
- 
-</div>
-@livewireScripts
 
-@stack('script')
+        
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  
+    
+</head>
+
+<body>
+    <div id="inicio2">  
+   
+        @yield('content-header')
+        @livewire('navigation-sn')
+        
+ 
+    </div>
+    @livewireScripts
+
+
+    @stack('script')
 
 </body>
 </html>

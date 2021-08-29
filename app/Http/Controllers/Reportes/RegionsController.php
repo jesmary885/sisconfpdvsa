@@ -24,11 +24,14 @@ class RegionsController extends Controller
         $regionid = $region->id;
         $fecha_actual = date('Y-m-d');
         $divisions = Division::where('region_id',$regionid)->get();
+        $divisionspaginate = Division::where('region_id',$regionid)->paginate(2);
         //$reportegeneral = Reportegeneral::where('avance_id','1')->get();
         $division_total = 0;
         $plan_total_dr = 0;
         $real_total_dr = 0;
+        $puntos = [];
         foreach ($divisions as $division){
+          
             $plan_total_usuarios_d = 0;
             $real_total_usuarios_d = 0;
             $cant_usuarios_d =0;
@@ -78,7 +81,11 @@ class RegionsController extends Controller
                 $real_total_dr = $real_total_dr + $real_total_d;
                 $division->reportedivision->update(['plan' => $plan_total_d,'real' => $real_total_d]);
                 $division_total = $division_total + 1;
+                
             }
+
+            $puntos[]= ['name' => $division['name'] , 'y' => $division->reportedivision['real']];
+            $data = json_encode($puntos);
         }
         if($division_total > 0){
             $plan_total_r = $plan_total_dr / $division_total;
@@ -87,6 +94,8 @@ class RegionsController extends Controller
             $cumplimiento_r = (($real_total_r) / ($plan_total_r)) * 100;
             $reportegeneral = Reportegeneral::where('avance_id','1')->first();
             $reportegeneral->update(["reporte_plan" => $plan_total_r, "reporte_real" => $real_total_r,"reporte_desviacion" => $desviacion_r, "reporte_cumplimiento" => $cumplimiento_r, "region_id" => $regionid]);
+           
+
      
         } else{
             $plan_total_r = 1;
@@ -96,7 +105,8 @@ class RegionsController extends Controller
             $reportegeneral = 1;
 
         }
-        return view('reportes.regions',compact('plan_total_r','real_total_r','desviacion_r','cumplimiento_r','divisions','anoreporteid','reportegeneral'));
+
+        return view('reportes.regions',compact('plan_total_r','real_total_r','desviacion_r','cumplimiento_r','divisions','anoreporteid','reportegeneral','data','divisionspaginate'));
 
     }
 

@@ -66,7 +66,11 @@
                 </div>
                 <div class="col-span-3 py-6 px-0 h-full bg-gradient-to-b from-gray-200 rounded shadow-lg">
                     <main>
+                     
                     @yield('content')
+                    @yield('css')
+                    @yield('js')
+                   
                     </main>
                 </div>
             </div>
