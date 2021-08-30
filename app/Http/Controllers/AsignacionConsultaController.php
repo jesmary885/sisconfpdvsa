@@ -13,6 +13,11 @@ class AsignacionConsultaController extends Controller
 
     public function buscar(Request $request)
     {
+
+        $request->validate([
+            'categoria' => 'required'
+        ]);
+
         $tiporeporte = $request["categoria"];
 
         if($tiporeporte==1){

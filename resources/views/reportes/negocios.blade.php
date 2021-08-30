@@ -9,6 +9,7 @@
 @section('content')
 
             <p class="text-gray-500 text-md font-bold bg-white text-center rounded shadow-lg border h-8"> REPORTE GENERAL</p>
+            <p class="text-gray-500 text-md font-bold bg-white text-center rounded shadow-lg border h-8"> << NEGOCIO {{$negocio->name}} >> </p>
 
             <div class="card">
                 @if ($usuarios->count())
@@ -35,7 +36,7 @@
                                             if ($desviacion_n <=1) {
                                                 $colord = 'green';
                                             }
-                                            elseif($desviacion_n >=2 || $desviacion_n <=10){
+                                            elseif($desviacion_n >=2 && $desviacion_n <=10){
                                                 $colord = 'orange';
                                             }
                                             else {
@@ -85,7 +86,7 @@
                                                             if ($desviacion_d <=1) {
                                                                 $colord_d = 'green';
                                                             }
-                                                            elseif($desviacion_d >=2 || $desviacion_d <=10){
+                                                            elseif($desviacion_d >=2 && $desviacion_d <=10){
                                                                 $colord_d = 'orange';
                                                             }
                                                             else {

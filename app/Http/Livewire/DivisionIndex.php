@@ -20,7 +20,7 @@ class DivisionIndex extends Component
     public function render()
     {
         $divisions =  Division::where('name', 'LIKE', '%' . $this->search . '%')
-                    ->paginate();
+                    ->paginate(5);
         return view('livewire.division-index',compact('divisions'));
     }
 }

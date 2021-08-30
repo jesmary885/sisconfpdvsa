@@ -58,6 +58,12 @@ class NegocioController extends Controller
 
        return redirect()->route('admin.negocios.create')->with('info','se ha creado el negocio correctamente');
     }
+
+    // public function destroy(Negocio $negocio)
+    // {
+    //     $negocio->delete();
+    //     return redirect()->route('admin.negocios.index')->with('info', 'El negocio se ha eliminado con éxito');
+    // }
 }
 
 

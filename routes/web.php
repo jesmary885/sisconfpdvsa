@@ -11,9 +11,8 @@ use App\Http\Livewire\Reportes\NegociosReporte;
 use App\Http\Livewire\Reportes\ObjoperacionalsReporte;
 use App\Http\Livewire\Reportes\ObjestrategicosReporte;
 use App\Http\Livewire\Reportes\ObjtacticosReporte;
+use App\Http\Livewire\UserIndex;
 use App\Http\Livewire\Users\ChangePass;
-
-
 
 
 Route::get('/', function () {
@@ -25,6 +24,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/crear_asignacion', GestionAsignacion::class)->name('home.asignacion');
 Route::get('/registrar_avance', GestionAvance::class)->name('home.avance');
+
+//Route::get('admin/users', UserIndex::class)->name('admin.users');
 
 //Route::resource('asignacion', AsignacionController::class)->only('edit','update')->names('asignacions');
 /*

@@ -20,7 +20,7 @@ class NegocioIndex extends Component
     public function render()
     {
         $negocios =  Negocio::where('name', 'LIKE', '%' . $this->search . '%')
-                    ->paginate();
+                    ->paginate(5);
         return view('livewire.negocio-index',compact('negocios'));
     }
 }

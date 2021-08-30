@@ -45,4 +45,10 @@ class RegionController extends Controller
 
        return redirect()->route('admin.regions.create')->with('info', 'La región se ha creado con éxito');
     }
+
+    // public function destroy(Region $region)
+    // {
+    //     $region->delete();
+    //     return redirect()->route('admin.regions.index')->with('info', 'La región se ha eliminado con éxito');
+    // }
 }

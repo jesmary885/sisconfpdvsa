@@ -49,6 +49,9 @@ class NegociosController extends Controller
                     $dias_real_carga_d = Carbon::parse($asignacion->fecha_carga_i)->diffInDays(Carbon::parse($fecha_actual));
                     $plan_carga_d = ((($dias_real_carga_d) * 100) / ($asignacion->plan_dias_carga)) * 0.05;
                     $plan_fecha_hoy_d = ($plan_conformacion_d + $plan_recopilacion_d + $plan_inf_d + $plan_divulgacion_d + $plan_carga_d);
+                    if ($plan_fecha_hoy_d > 100){
+                        $plan_fecha_hoy_d = 100;
+                    }
                     $plan_fecha_hoy_usuario_d = $plan_fecha_hoy_usuario_d + $plan_fecha_hoy_d;
                     $real_asignacion_d = $asignacion->avance->avance_real;
                     $real_total_asignacion_n = $real_total_asignacion_n + $real_asignacion_d;
@@ -80,7 +83,7 @@ class NegociosController extends Controller
                 $reportegeneral = 1;
     
             }
-        return view('reportes.negocios',compact('plan_total_n','real_total_n','desviacion_n','cumplimiento_n','usuarios','anoreporteid','reportegeneral'));
+        return view('reportes.negocios',compact('negocio','plan_total_n','real_total_n','desviacion_n','cumplimiento_n','usuarios','anoreporteid','reportegeneral'));
 
     }
 

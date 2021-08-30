@@ -34,6 +34,5 @@
                 <strong>No hay registros</strong>
             </div>
         @endif
-            
     </div>
 </div>

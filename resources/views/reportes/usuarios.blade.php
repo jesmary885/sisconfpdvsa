@@ -9,6 +9,7 @@
 @section('content')
 
     <p class="text-gray-500 text-md font-bold bg-white text-center rounded shadow-lg border h-8"> REPORTE GENERAL</p>
+    <p class="text-gray-500 text-md font-bold bg-white text-center rounded shadow-lg border h-8"> << {{$usuario->name}} {{$usuario->apellido}} >></p>
     <div class="card">
         @if ($asignacions->count())
             <div class="card-body">
@@ -49,32 +50,32 @@
                         <table class="table table-striped w-full">
                             <thead>
                                 <tr class="text-gray-500 text-md font-bold bg-white rounded shadow-lg border h-8">
-                                    <th>Objetivo operacional</th>
-                                    <th>Avance Real</th>
-                                    <th>Planificado</th>
-                                    <th >Desviación</th>
-                                    <th >Cumplimiento</th>
+                                    <th class="px-2">Objetivo operacional</th>
+                                    <th class="px-2">Avance Real</th>
+                                    <th class="px-2">Planificado</th>
+                                    <th class="px-2">Desviación</th>
+                                    <th class="px-2">Cumplimiento</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($asignacions as $asignacion)
                                     <tr class="py-2 border-collapse border border-gray-300">
-                                        <td class="py-4 pr-4 pl-6">{{$asignacion->objoperacional->description}}</td>
-                                        <td class="py-2 pl-4">{{round($asignacion->avance->avance_real,2) ?? '-'}} %</td>
-                                        <td class="py-2 pl-8">{{round($asignacion->avance->avance_plan,2) ?? '-'}} %</td>
+                                        <td class="p-2">{{$asignacion->objoperacional->description}}</td>
+                                        <td class="text-center">{{round($asignacion->avance->avance_real,2) ?? '-'}} %</td>
+                                        <td class="text-center">{{round($asignacion->avance->avance_plan,2) ?? '-'}} %</td>
                                         <?php $desviacion = ($asignacion->avance->avance_plan) - ($asignacion->avance->avance_real);
                                             if ($desviacion <=1) {
                                                 $colord = 'green';
                                             }
-                                            elseif($desviacion >=2 || $desviacion <=10){
+                                            elseif($desviacion >=2 && $desviacion <=10){
                                                 $colord = 'orange';
                                             }
                                             else {
                                                 $colord = 'red';
                                             }
                                         ?>
-                                        <td class="py-2 pl-8 font-bold" style ="color: {{$colord}}"> {{round(($asignacion->avance->avance_plan) - ($asignacion->avance->avance_real)),2}} % </td>
-                                        <td class="py-2 pl-8">{{round((($asignacion->avance->avance_real) / ($asignacion->avance->avance_plan))*100),2}} %</td>
+                                        <td class="text-center font-bold" style ="color: {{$colord}}"> {{round(($asignacion->avance->avance_plan) - ($asignacion->avance->avance_real)),2}} % </td>
+                                        <td class="text-center">{{round((($asignacion->avance->avance_real) / ($asignacion->avance->avance_plan))*100),2}} %</td>
                                     </tr>
                                 @endforeach 
                             </tbody>
@@ -93,6 +94,10 @@
         @else
             <div class="px-6 py-4">
                 El usuario seleccionado no posee asignaciones registradas
+            </div>
+
+            <div class="px-4">
+                <a href="{{route('listado.usuario')}}" class="text-gray-600 text-lg font-bold hover:text-red-600 text">Regresar</a>
             </div>
          @endif
     </div>

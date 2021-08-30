@@ -9,7 +9,7 @@ Use Livewire\WithPagination;
 
 class RegionIndex extends Component
 {
-     use WithPagination;
+    use WithPagination;
     protected $paginationTheme = "bootstrap";
 
     public $search;
@@ -21,7 +21,7 @@ class RegionIndex extends Component
     public function render()
     {
         $regions =  Region::where('name', 'LIKE', '%' . $this->search . '%')
-                    ->paginate();
+                    ->paginate(5);
         return view('livewire.region-index',compact('regions'));
     }
 }

@@ -23,7 +23,7 @@
                                         if ($desviacion <=1) {
                                                 $colord = 'green';
                                             }
-                                            elseif($desviacion >=2 || $desviacion <=10){
+                                            elseif($desviacion >=7 && $desviacion <=10){
                                                 $colord = 'orange';
                                             }
                                             else {

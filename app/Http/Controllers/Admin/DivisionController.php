@@ -55,4 +55,10 @@ class DivisionController extends Controller
 
        return redirect()->route('admin.divisions.create',$division)->with('info', 'La división se ha creado con éxito');
     }
+
+    // public function destroy(Division $division)
+    // {
+    //     $division->delete();
+    //     return redirect()->route('admin.divisions.index')->with('info', 'La división se ha eliminado con éxito');
+    // }
 }

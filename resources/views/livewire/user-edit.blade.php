@@ -1,19 +1,19 @@
 <div>
     <div class="card">
-        <h1 class="py-12">Registro de Usuarios</h1>
+        <h1 class="py-12">Actualizar usuario</h1>
     </div>
 
     <div class="card w-full">
-        <div class="card-body w-full">
+            <div class="card-body w-full">
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="nombre">Nombre:</label>
-                    <input wire:model="nombre" type="text" class="form-control" placeholder="Ingrese el nombre">
+                    <input wire:model.defer="nombre" type="text" name="nombre" class="form-control" >
                     <x-input-error for="nombre" />
                   </div>
                   <div class="form-group col-md-6">
                     <label for="apellido">Apellido:</label>
-                    <input wire:model="apellido" type="text" class="form-control" placeholder="Ingrese el apellido">
+                    <input wire:model.defer="apellido" type="text" class="form-control">
                     <x-input-error for="apellido" />
                   </div>
                 </div>
@@ -75,19 +75,10 @@
                 </div>
                 <div class="py-12">
                     <button type="submit" class="btn btn-primary" wire:click="save">
-                        Registrar usuario
+                        Actualizar usuario
                     </button>
                 </div>
         </div>
     </div>
-
-        <script>
-              livewire.on('alertShangePass', function(){
-            Swal.fire(
-                'Usuario creado correctamente!',
-                '',
-                'success')
-        })
-        </script>
-
 </div>
+

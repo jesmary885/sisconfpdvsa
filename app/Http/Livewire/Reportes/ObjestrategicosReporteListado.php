@@ -9,19 +9,14 @@ use Livewire\Component;
 
 class ObjestrategicosReporteListado extends Component
 {
-    public $anos;
-    public $ano_id, $ano_idd;
+    public $anos, $ano_id, $ano_idd, $search, $pSelectAno;
 
     use WithPagination;
   
-    public $search;
-    public $pSelectAno;
-
     public function mount(){
         $this->ano_id = "0";
         $this->ano_idd = "0";
     }
-
 
     public function updatingSearch(){
     $this->resetPage();
@@ -31,7 +26,6 @@ class ObjestrategicosReporteListado extends Component
     {
         $this->ano_idd = Anoreporte::find($value);
     }
-
 
     public function render()
     {

@@ -3,17 +3,18 @@
 namespace App\Http\Livewire;
 
 use App\Models\Division;
+use App\Models\Negocio;
 use App\Models\Region;
-use App\Models\Reporteusuario;
 use App\Models\User;
-use Livewire\Component;
 use Illuminate\Support\Facades\Hash;
+use Livewire\Component;
 
-class UserCreate extends Component
+class UserEdit extends Component
 {
+
     public $region_id ="",$division_id ="",$negocio_id ="";
-    public $divisions = [],$negocios = [];
-    public $nombre, $apellido, $cedula, $indicador, $telefono, $email, $regions, $mensaje;
+    public $divisions,$negocios;
+    public $nombre, $apellido, $cedula, $indicador, $telefono, $email, $regions, $mensaje, $user;
     
     protected $rules = [
         'region_id' => 'required',
@@ -24,18 +25,33 @@ class UserCreate extends Component
         'cedula' => 'required|numeric|min:7',
         'indicador' => 'required',
         'telefono' => 'required|numeric|min:11',
-        'email' => 'required|max:50|unique:users',
+        'email' => 'required|max:50',
     ];
+
+    public function mount(){
+      
+        $this->nombre = $this->user->name;
+        $this->apellido = $this->user->apellido;
+        $this->email = $this->user->email;
+        $this->cedula = $this->user->cedula;
+        $this->indicador = $this->user->indicador;
+        $this->telefono = $this->user->telefono;
+        $this->region_id = $this->user->region_id;
+        $this->division_id = $this->user->division_id;
+        $this->negocio_id = $this->user->negocio_id;
+        $this->regions=Region::all();
+        $this->divisions=Division::all();
+        $this->negocios=Negocio::all();
+        $this->mensaje = false;
+    }
 
     public function render()
     {
-        return view('livewire.user-create');
+     
+        return view('livewire.user-edit');
     }
 
-    public function mount(){
-        $this->regions=Region::all();
-        $this->mensaje = false;
-    }
+  
 
     public function updatedRegionId($value)
     {
@@ -54,7 +70,7 @@ class UserCreate extends Component
         $rules = $this->rules;
         $this->validate($rules);
 
-        $usuario = new User();
+        $usuario = User::where('id',$this->user->id)->first();
         $usuario->name = $this->nombre;
         $usuario->email = $this->email;
         $usuario->indicador = $this->indicador;
@@ -67,12 +83,6 @@ class UserCreate extends Component
         $usuario->negocio_id = $this->negocio_id;
         $usuario->save();
 
-        $reporte_usuario = new Reporteusuario();
-        $reporte_usuario->real = 0;
-        $reporte_usuario->plan = 0;
-        $reporte_usuario->user_id = $usuario->id;
-        $reporte_usuario->save();
-
         return redirect()->route('admin.users.index');
 
         // $this->reset(['nombre','apellido','cedula','division_id','negocio_id','region_id','email','telefono','indicador']);
@@ -81,4 +91,5 @@ class UserCreate extends Component
         // $this->emit('alert','Usuario registrado correctamente');
         
     }
+
 }

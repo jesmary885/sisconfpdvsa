@@ -20,45 +20,30 @@ use Livewire\Component;
 class GestionAsignacion extends Component
 {
     public $objestrategicos, $regions;
-
-    public $objestrategicos_id ="";
-    public $objtacticos_id ="";
-    public $objoperacionals_id ="";
-
-    public $region_id ="";
-    public $division_id ="";
-    public $negocio_id ="";
-
-    public $usuario_id ="";
-
-    public $tacticos = [];
-    public $operacionals = [];
-
-    public $divisions = [];
-    public $negocios = [];
-
-    public $usuarios= [];
-
-    public $input_conformacion_i;
-    public $input_conformacion_f;
-    public $input_recopilacion_i;
-    public $input_recopilacion_f;
-    public $input_inf_i;
-    public $input_inf_f;
-    public $input_divulgacion_i;
-    public $input_divulgacion_f;
-    public $input_carga_i;
-    public $input_carga_f;
-    public $fecha_creacion;
-    public $fecha_actual;
-    public $ano;
- 
+    public $objestrategicos_id ="", $objtacticos_id ="", $objoperacionals_id ="", $region_id ="", $division_id ="",$negocio_id ="",$usuario_id ="";
+    public $tacticos = [], $operacionals = [], $divisions = [], $negocios = [],$usuarios= [];
+    public $input_conformacion_i, $input_conformacion_f, $input_recopilacion_i,$input_recopilacion_f,$input_inf_i,$input_inf_f,$input_divulgacion_i,$input_divulgacion_f,$input_carga_i,$input_carga_f,$fecha_creacion,$fecha_actual,$ano;
     public $saved = false;
 
-    public function render()
-    {
-        return view('livewire.gestion-asignacion');
-    }
+    protected $rules = [
+        'objestrategicos_id' => 'required',
+        'objtacticos_id' => 'required',
+        'objoperacionals_id' => 'required',
+        'input_conformacion_i' => 'required',
+        'input_conformacion_f' => 'required',
+        'input_recopilacion_i' => 'required',
+        'input_recopilacion_i' => 'required',
+        'input_inf_i' => 'required',
+        'input_inf_f' => 'required',
+        'input_divulgacion_i' => 'required',
+        'input_divulgacion_f' => 'required',
+        'input_carga_i' => 'required',
+        'input_carga_i' => 'required',
+        'region_id' => 'required',
+        'division_id' => 'required',
+        'negocio_id' => 'required',
+        'usuario_id' => 'required',
+    ];
 
     public function mount(){
         $this->objestrategicos=Objestrategico::all();
@@ -99,23 +84,22 @@ class GestionAsignacion extends Component
 
     public function save(){
 
+        $rules = $this->rules;
         $this->fecha_actual = date('Y-m-d');
-       $fecha = Carbon::parse($this->fecha_actual);
-       $this->ano = $fecha->year;
-       $ano_reporte = Anoreporte::where('ano',$this->ano)->first();
-
-        $asignacion = new Asignacion();
-        $avance = new Avance();
+        $fecha = Carbon::parse($this->fecha_actual);
+        $this->ano = $fecha->year;
+        $ano_reporte = Anoreporte::where('ano',$this->ano)->first();
         $reportegeneral = Reportegeneral::where('avance_id','1')->first();
-       
       
-        //Calculando cantidad de dias entre fechas de cada hito
         $conformacion_total = Carbon::parse($this->input_conformacion_i)->diffInDays(Carbon::parse($this->input_conformacion_f));
         $recopilacion_total = Carbon::parse($this->input_recopilacion_i)->diffInDays(Carbon::parse($this->input_recopilacion_f));
         $inf_total = Carbon::parse($this->input_inf_i)->diffInDays(Carbon::parse($this->input_inf_f));
         $divulgacion_total = Carbon::parse($this->input_divulgacion_i)->diffInDays(Carbon::parse($this->input_divulgacion_f));
         $carga_total = Carbon::parse($this->input_carga_i)->diffInDays(Carbon::parse($this->input_carga_f));
 
+        $this->validate($rules);
+
+        $asignacion = new Asignacion();
         $asignacion->user_id = $this->usuario_id;
         $asignacion->objestrategico_id = $this->objestrategicos_id;
         $asignacion->objtactico_id = $this->objtacticos_id;
@@ -134,6 +118,7 @@ class GestionAsignacion extends Component
         $asignacion->anoreporte_id = $ano_reporte->id;
         $asignacion->save();
 
+        $avance = new Avance();
         $ultima_asignacion = $asignacion->id;
         $avance->avance_plan = '0';
         $avance->avance_real = '0';
@@ -162,6 +147,11 @@ class GestionAsignacion extends Component
 
         $this->reset(['objestrategicos_id','objtacticos_id','objoperacionals_id','input_conformacion_i','input_recopilacion_i','input_inf_i','input_divulgacion_i','input_carga_i','region_id','division_id','negocio_id','input_conformacion_f','input_recopilacion_f','input_inf_f','input_divulgacion_f','input_carga_f','usuario_id']);
         $this->emit('alert');
+    }
+
+    public function render()
+    {
+        return view('livewire.gestion-asignacion');
     }
 }
 

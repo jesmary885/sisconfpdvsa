@@ -5,10 +5,10 @@
             <select wire:model="ano_id" x-on:click="count = 1" class="w-52 form-control h-8 text-m text-center ml-4">
                 <option value="" selected>Seleccionar año</option>
                 @foreach ($anos as $ano)
-                <option value="{{$ano->id}}">{{$ano->ano}}</option>
+                    <option value="{{$ano->id}}">{{$ano->ano}}</option>
                 @endforeach
-        </select> 
-       
+            </select> 
+            <x-input-error for="ano_id" />
         </div>     
 
         <div class="pt-4">
@@ -17,6 +17,7 @@
                 class="w-full h-12 px-2 font-semibold"
                 placeholder="Ingrese el nombre de la región a buscar" />
         </div>
+
         <div class="card">
             @if ($regions->count())
                 <div class="card-body">
@@ -60,22 +61,7 @@
                 </div>
             @endif
         </div>  
-
-       
     </x-table-responsive>
-
-{{-- 
-    <script>
-        document.addEventListener('DOMContentLoaded', function(){
-            $('#select_ano'). select2()
-            $('#select_ano').on('change',function(e){
-                var aID= $('#select_ano').select2("val")
-                var anos= $('#select_ano option:selected').text()
-                @this.set('anoSelectId', aID)
-                @this.set('anoSelect', anos)
-            });
-        });
-    </script>  --}}
 </div>
 
 

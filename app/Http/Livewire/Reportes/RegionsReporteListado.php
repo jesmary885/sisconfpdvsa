@@ -10,19 +10,14 @@ use Livewire\Component;
 class RegionsReporteListado extends Component
 {
 
-    public $anos;
-    public $ano_id, $ano_idd;
+    public $anos, $ano_id, $ano_idd,$search,$pSelectAno;
 
     use WithPagination;
-  
-    public $search;
-    public $pSelectAno;
 
     public function mount(){
         $this->ano_id = "0";
         $this->ano_idd = "0";
     }
-
 
     public function updatingSearch(){
     $this->resetPage();

@@ -9,6 +9,7 @@
 
 @section('content')
 <p class="text-gray-500 text-md font-bold bg-white text-center rounded shadow-lg border h-8"> REPORTE GENERAL</p>
+<p class="text-gray-500 text-md font-bold bg-white text-center rounded shadow-lg border h-8"> << REGIÓN {{$region->name}} >> </p>
 <div class="card">
     @if ($divisions->count())
         <div class="card-body">
@@ -34,7 +35,7 @@
                                 if ($desviacion_r <=1) {
                                     $colord = 'green';
                                 }
-                                elseif($desviacion_r >=2 || $desviacion_r <=10){
+                                elseif($desviacion_r >=2 && $desviacion_r <=10){
                                     $colord = 'orange';
                                 }
                                 else {
@@ -53,6 +54,9 @@
             @if ($reportegeneral == '1')
                 <div class="card-body">
                     <strong>La región seleccionada no tiene asignaciones registradas</strong>
+                </div>
+                <div class="p-4">
+                    <a href="{{route('listado.region')}}" class="text-gray-600 text-lg font-bold hover:text-red-600 text">Regresar</a>
                 </div>
              @else
                 <div class="card">
@@ -84,7 +88,7 @@
                                                 if ($desviacion_d <=1) {
                                                     $colord_d = 'green';
                                                 }
-                                                elseif($desviacion_d >=2 || $desviacion_d <=10){
+                                                elseif($desviacion_d >=2 && $desviacion_d <=10){
                                                     $colord_d = 'orange';
                                                 }
                                                 else {
@@ -107,7 +111,6 @@
                 </div>
                 <figure class="highcharts-figure pt-4">
                     <div id="container"></div>
-                   
                   </figure>
 
                 <div class="flex py-4">
@@ -210,7 +213,7 @@
       },
       series: [
         {
-          name: "Browsers",
+          name: "Negocios",
           colorByPoint: true,
           data: <?= $data ?> 
         }

@@ -44,6 +44,9 @@ class ObjEstrategicosController extends Controller
                     $dias_real_carga_d = Carbon::parse($asignacion->fecha_carga_i)->diffInDays(Carbon::parse($fecha_actual));
                     $plan_carga_d = ((($dias_real_carga_d) * 100) / ($asignacion->plan_dias_carga)) * 0.05;
                     $plan_fecha_hoy_asig = ($plan_conformacion_d + $plan_recopilacion_d + $plan_inf_d + $plan_divulgacion_d + $plan_carga_d);
+                    if ($plan_fecha_hoy_asig > 100){
+                        $plan_fecha_hoy_asig = 100;
+                    }
                     $plan_fecha_hoy_obj = $plan_fecha_hoy_obj + $plan_fecha_hoy_asig;
                     $real_asignacion = $asignacion->avance->avance_real;
                     $real_total_asignacion = $real_total_asignacion + $real_asignacion;

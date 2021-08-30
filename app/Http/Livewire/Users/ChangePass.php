@@ -12,9 +12,10 @@ class ChangePass extends Component
     public $password,$old_password,$password_confirmation;
     public $open = false;
     
-
     protected $rules = [
-        'password' => 'required|string|min:8|confirmed',
+        'password' => 'required|min:8|confirmed',
+        'old_password' => 'required|min:8',
+        'password_confirmation' => 'required|min:8',
     ];
 
     public function render()
@@ -44,8 +45,6 @@ class ChangePass extends Component
 
     }
     public function close(){
-
        return redirect()->route('home');
-
     }
 }

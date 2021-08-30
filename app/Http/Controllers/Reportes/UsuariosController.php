@@ -42,6 +42,9 @@ class UsuariosController extends Controller
                 $dias_real_carga = Carbon::parse($asignacion->fecha_carga_i)->diffInDays(Carbon::parse($fecha_actual));
                 $plan_carga = ((($dias_real_carga) * 100) / ($asignacion->plan_dias_carga)) * 0.05;
                 $plan_fecha_hoy = ($plan_conformacion + $plan_recopilacion + $plan_inf + $plan_divulgacion + $plan_carga);
+                if ($plan_fecha_hoy > 100){
+                    $plan_fecha_hoy = 100;
+                }
                 $asignacion->avance->update(['avance_plan' => $plan_fecha_hoy]);
                 $real_asignacion_d = $asignacion->avance->avance_real;
                 $real_total_asignacion_d = $real_total_asignacion_d + $real_asignacion_d;
@@ -63,7 +66,7 @@ class UsuariosController extends Controller
                 $cumplimiento_usuario_d = 1;
             }
 
-            return view('reportes.usuarios',compact('plan_usuario_d','real_usuario_d','desviacion_usuario_d','cumplimiento_usuario_d','asignacions'));
+            return view('reportes.usuarios',compact('usuario','plan_usuario_d','real_usuario_d','desviacion_usuario_d','cumplimiento_usuario_d','asignacions'));
     }
 
     public function exportExcel()

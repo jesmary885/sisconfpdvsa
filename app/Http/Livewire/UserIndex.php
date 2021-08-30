@@ -11,8 +11,11 @@ class UserIndex extends Component
 
     use WithPagination;
     protected $paginationTheme = "bootstrap";
-
     public $search;
+    public $sortField ='id';
+    public $sortAsc = 'desc';
+
+    protected $listeners = ['render'];
 
     public function updatingSearch(){
         $this->resetPage();
@@ -22,7 +25,8 @@ class UserIndex extends Component
     {
         $users = User::where('name', 'LIKE', '%' . $this->search . '%')
                     ->orwhere('email', 'LIKE', '%' . $this->search . '%')
-                    ->paginate();
+                    ->orderBy($this->sortField, $this->sortAsc)
+                    ->paginate(6);
         return view('livewire.user-index',compact('users'));
     }
 }

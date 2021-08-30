@@ -10,13 +10,10 @@ Use Livewire\WithPagination;
 class UsuariosReporteListado extends Component
 {
 
-    public $anos;
-    public $ano_id; 
-    public $ano_idd = "0";
-    use WithPagination;
-    public $search;
-    public $pSelectAno;
+    public $anos, $ano_id, $ano_idd = "0", $search, $pSelectAno;
 
+    use WithPagination;
+    
     public function mount(){
         $this->ano_id = "0";
         $this->ano_idd = "0";
@@ -29,16 +26,12 @@ class UsuariosReporteListado extends Component
     public function updatedAnoId($value)
     {
         $this->ano_idd = Anoreporte::find($value);
-      
     }
 
     public function render()
     {
-
         $this->anos=Anoreporte::all();
         $anor = $this->ano_idd;
-   
-
         $users = User::where('name', 'LIKE', '%' . $this->search . '%')
                     ->orwhere('email', 'LIKE', '%' . $this->search . '%')
                     ->paginate(5);

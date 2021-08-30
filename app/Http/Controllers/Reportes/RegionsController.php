@@ -60,6 +60,9 @@ class RegionsController extends Controller
                     $dias_real_carga_d = Carbon::parse($asignacion_usuario->fecha_carga_i)->diffInDays(Carbon::parse($fecha_actual));
                     $plan_carga_d = ((($dias_real_carga_d) * 100) / ($asignacion_usuario->plan_dias_carga)) * 0.05;
                     $plan_fecha_hoy_d = ($plan_conformacion_d + $plan_recopilacion_d + $plan_inf_d + $plan_divulgacion_d + $plan_carga_d);
+                    if ($plan_fecha_hoy_d > 100){
+                        $plan_fecha_hoy_d = 100;
+                    }
                     $plan_fecha_hoy_usuario_d = $plan_fecha_hoy_usuario_d + $plan_fecha_hoy_d;
                     $real_asignacion_d = $asignacion_usuario->avance->avance_real;
                     $real_total_asignacion_d = $real_total_asignacion_d + $real_asignacion_d;
@@ -106,7 +109,7 @@ class RegionsController extends Controller
 
         }
 
-        return view('reportes.regions',compact('plan_total_r','real_total_r','desviacion_r','cumplimiento_r','divisions','anoreporteid','reportegeneral','data','divisionspaginate'));
+        return view('reportes.regions',compact('region','plan_total_r','real_total_r','desviacion_r','cumplimiento_r','divisions','anoreporteid','reportegeneral','data','divisionspaginate'));
 
     }
 
