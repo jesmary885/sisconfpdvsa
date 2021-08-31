@@ -5,7 +5,7 @@
 
 @section('content_header')
     <h1 class="text-lg text-white-700">Reporte por región</h1>
-    @endsection
+@endsection
 
 @section('content')
 <p class="text-gray-500 text-md font-bold bg-white text-center rounded shadow-lg border h-8"> REPORTE GENERAL</p>
@@ -40,6 +40,12 @@
                                 }
                                 else {
                                     $colord = 'red';
+                                    if ($desviacion_r > 100){
+                                        $desviacion_r = 100;
+                                     }
+                                }
+                                if ($cumplimiento_r > 100){
+                                    $cumplimiento_r = 100;
                                 }
                             ?>
                             <td class="text-center font-bold" style ="color: {{$colord}}"> {{round($desviacion_r),2}} % </td>
@@ -93,6 +99,12 @@
                                                 }
                                                 else {
                                                     $colord_d = 'red';
+                                                    if ($desviacion_d > 100){
+                                                    $desviacion_d = 100;
+                                                    }
+                                                }
+                                                if ($cumplimiento_d > 100){
+                                                    $cumplimiento_d = 100;
                                                 }
                                             }
                                         ?>
@@ -213,7 +225,7 @@
       },
       series: [
         {
-          name: "Negocios",
+          name: "Division",
           colorByPoint: true,
           data: <?= $data ?> 
         }

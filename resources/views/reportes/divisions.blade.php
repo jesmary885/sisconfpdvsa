@@ -33,8 +33,6 @@
                     background: #f1f7ff;
                 }
                 </style>
-
-
 @extends('layouts.inicio2')
 
 @section('title', 'Sisconf')
@@ -77,6 +75,12 @@
                                     }
                                     else {
                                         $colord = 'red';
+                                        if ($desviacion_r > 100){
+                                                $desviacion_r = 100;
+                                        }
+                                    }
+                                    if ($cumplimiento_r > 100){
+                                                $cumplimiento_r = 100;
                                     }
                                 ?>
                                 <td class="text-center font-bold" style ="color: {{$colord}}"> {{round($desviacion_r),2}} % </td>
@@ -130,6 +134,13 @@
                                                     }
                                                     else {
                                                         $colord_d = 'red';
+                                                        if ($desviacion_d > 100){
+                                                                $desviacion_d = 100;
+                                                        }
+                                                    }
+
+                                                    if ($cumplimiento_d > 100){
+                                                    $cumplimiento_d = 100;
                                                     }
                                                 }
                                             ?>
@@ -210,7 +221,7 @@
                   },
                   series: [
                     {
-                      name: "Negocios",
+                      name: "Negocio",
                       colorByPoint: true,
                       data: <?= $data ?> 
                     }

@@ -39,6 +39,7 @@
                                     else {
                                         $colord = 'red';
                                     }
+                                  
                                 ?>
                             <td class="text-center font-bold" style ="color: {{$colord}}"> {{round($desviacion),2}} % </td>
                             <td class="text-center">{{round($cumplimiento),2}} %</td>

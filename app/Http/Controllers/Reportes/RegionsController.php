@@ -82,9 +82,14 @@ class RegionsController extends Controller
                 $real_total_d = $real_total_usuarios_d / $cant_usuarios_d;
                 $plan_total_dr = $plan_total_dr + $plan_total_d;
                 $real_total_dr = $real_total_dr + $real_total_d;
+                if ($plan_total_d > 100){
+                    $plan_total_d = 100;
+                }
+                if ($real_total_d > 100){
+                    $real_total_d = 100;
+                }
                 $division->reportedivision->update(['plan' => $plan_total_d,'real' => $real_total_d]);
                 $division_total = $division_total + 1;
-                
             }
 
             $puntos[]= ['name' => $division['name'] , 'y' => $division->reportedivision['real']];
@@ -93,6 +98,12 @@ class RegionsController extends Controller
         if($division_total > 0){
             $plan_total_r = $plan_total_dr / $division_total;
             $real_total_r = $real_total_dr / $division_total;
+            if ($plan_total_r > 100){
+                $plan_total_r = 100;
+            }
+            if ($real_total_r > 100){
+                $real_total_r = 100;
+            }
             $desviacion_r = ($plan_total_r) - ($real_total_r);
             $cumplimiento_r = (($real_total_r) / ($plan_total_r)) * 100;
             $reportegeneral = Reportegeneral::where('avance_id','1')->first();

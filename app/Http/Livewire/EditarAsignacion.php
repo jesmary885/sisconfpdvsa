@@ -41,7 +41,13 @@ class EditarAsignacion extends Component
             $sumreal = 100;
         }
         $desviacion = ($avance->avance_plan) - $sumreal;
-        $cumplimiento = ($sumreal / ($avance->avance_plan)) * 100;
+        if($desviacion > 100){
+            $desviacion = 100;
+        }
+        $cumplimiento = (($sumreal / ($avance->avance_plan)) * 100);
+        if($cumplimiento > 100){
+            $cumplimiento = 100;
+        }
         $avance->avance_real = $sumreal;
         $avance->asignacion_id = $this->asignacion->id;
         $avance->avance_plan = $avance->avance_plan;

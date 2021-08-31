@@ -30,11 +30,17 @@
                                 if ($desviacion_usuario_d <=1) {
                                     $colord = 'green';
                                 }
-                                elseif($desviacion_usuario_d >=2 || $desviacion_usuario_d <=10){
+                                elseif($desviacion_usuario_d >=2 && $desviacion_usuario_d <=10){
                                     $colord = 'orange';
                                 }
                                 else {
                                     $colord = 'red';
+                                    if ($desviacion_usuario_d > 100) {
+                                        $desviacion_usuario_d = 100;
+                                    }
+                                }
+                                if ($cumplimiento_usuario_d > 100){
+                                        $cumplimiento_usuario_d = 100;
                                 }
                             ?>
                             <td class="text-center font-bold" style ="color: {{$colord}}"> {{round($desviacion_usuario_d),2}} % </td>
@@ -58,12 +64,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($asignacions as $asignacion)
+                                @foreach ($asignacionspaginate as $asignacion)
                                     <tr class="py-2 border-collapse border border-gray-300">
                                         <td class="p-2">{{$asignacion->objoperacional->description}}</td>
                                         <td class="text-center">{{round($asignacion->avance->avance_real,2) ?? '-'}} %</td>
                                         <td class="text-center">{{round($asignacion->avance->avance_plan,2) ?? '-'}} %</td>
                                         <?php $desviacion = ($asignacion->avance->avance_plan) - ($asignacion->avance->avance_real);
+                                            $cumplimiento = (($asignacion->avance->avance_real) / ($asignacion->avance->avance_plan)*100);
                                             if ($desviacion <=1) {
                                                 $colord = 'green';
                                             }
@@ -72,14 +79,25 @@
                                             }
                                             else {
                                                 $colord = 'red';
+
+                                                if ($desviacion > 100){
+                                                    $desviacion = 100;
+                                                 }
                                             }
+                                        if ($cumplimiento > 100){
+                                            $cumplimiento = 100;
+                                        }
+
                                         ?>
-                                        <td class="text-center font-bold" style ="color: {{$colord}}"> {{round(($asignacion->avance->avance_plan) - ($asignacion->avance->avance_real)),2}} % </td>
-                                        <td class="text-center">{{round((($asignacion->avance->avance_real) / ($asignacion->avance->avance_plan))*100),2}} %</td>
+                                        <td class="text-center font-bold" style ="color: {{$colord}}"> {{round($desviacion)}} % </td>
+                                        <td class="text-center">{{round($cumplimiento)}} %</td>
                                     </tr>
                                 @endforeach 
                             </tbody>
                         </table>
+                        <div class="mt-4">
+                            {{$asignacionspaginate->links()}}
+                        </div>
                     </div>
                 </div>
                 <div class="flex py-4">

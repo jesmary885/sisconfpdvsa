@@ -21,7 +21,7 @@ class CreateAsignacionsTable extends Migration
             $table->date('fecha_inf_i');
             $table->date('fecha_divulgacion_i');
             $table->date('fecha_carga_i');
-            $table->date('fecha_creacion');
+            $table->integer('ano_creacion');
             $table->integer('plan_dias_conformacion');
             $table->integer('plan_dias_recopilacion');
             $table->integer('plan_dias_inf');

@@ -13,15 +13,24 @@ class GestionAvance extends Component
 { 
     use WithPagination;
 
-    public $fecha_actual, $avance;
-    protected $listeners = ['render' => 'render'];
+    public $fecha_actual, $avance,$ano;
+    //protected $listeners = ['render' => 'render'];
+    public $sort = 'id';
+    public $direction = 'desc';
+   
 
     public function render()
     {
+        $this->fecha_actual = date('Y-m-d');
+        $fecha = Carbon::parse($this->fecha_actual);
+        $this->ano = $fecha->year;
         $usuario = Auth::user()->id;
-       $asignacions = Asignacion::where('user_id',$usuario)->get();
-       $this->fecha_actual = date('Y-m-d');
+       $asignacions = Asignacion::where('user_id',$usuario)
+                                    ->where('ano_creacion', $this->ano)
+                                    ->orderBy($this->sort, $this->direction)
+                                    ->get();
 
+     
        foreach ($asignacions as $asignacion){
    
             $plan_conformacion = 0;
@@ -45,6 +54,8 @@ class GestionAvance extends Component
             if ($plan_fecha_hoy > 100){
                 $plan_fecha_hoy = 100;
             }
+          
+            
             $asignacion->avance->update(['avance_plan' => $plan_fecha_hoy]);
             //$this_avance = Avance::where('asignacion_id',$asignacion->id)->get();
        }

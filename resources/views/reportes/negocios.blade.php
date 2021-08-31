@@ -41,6 +41,12 @@
                                             }
                                             else {
                                                 $colord = 'red';
+                                                if ($desviacion_n > 100){
+                                                $desviacion_n = 100;
+                                            }
+                                            }
+                                            if ($cumplimiento_n > 100){
+                                                $cumplimiento_n = 100;
                                             }
                                         ?>
                                         <td class="text-center font-bold" style ="color: {{$colord}}"> {{round($desviacion_n),2}} % </td>
@@ -56,6 +62,9 @@
                             <div class="card-body">
                                 <strong>El negocio seleccionado no tiene asignaciones registradas</strong>
                             </div>
+                            <div class="p-4">
+                                <a href="{{route('listado.negocio')}}" class="text-gray-600 text-lg font-bold hover:text-red-600 text">Regresar</a>
+                            </div>
                          @else
                             <div class="card">
                                 <div class="card-body">
@@ -70,7 +79,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($usuarios as $usuario)
+                                            @foreach ($usuariospaginate as $usuario)
                                                 <tr class="py-2 border-collapse border border-gray-300">
                                                     <td class="py-2 text-center">{{$usuario->name}} {{$usuario->apellido}}</td>
                                                     <td class="text-center">{{round($usuario->reporteusuario->real,2) ?? '-'}} %</td>
@@ -91,6 +100,14 @@
                                                             }
                                                             else {
                                                                 $colord_d = 'red';
+
+                                                                if ($desviacion_d > 100){
+                                                                $desviacion_d = 100;
+                                                                }
+                                                            }
+
+                                                            if ($cumplimiento_d > 100){
+                                                                $cumplimiento_d = 100;
                                                             }
                                                         }
                                                     ?>
@@ -100,6 +117,10 @@
                                             @endforeach 
                                         </tbody>
                                     </table>
+
+                                    <div class="mt-4">
+                                        {{$usuariospaginate->links()}}
+                                    </div>
                                 </div>
                             </div>
 
@@ -122,6 +143,8 @@
                     <div class="px-6 py-4">
                         No hay usuarios registrados con el negocio seleccionado
                     </div>
+
+                    
                 @endif
             </div>
 @stop

@@ -6,7 +6,6 @@
     <h1 class="text-lg text-white-700">Reporte por Objetivo tactico</h1>
 @stop
 
-
 @section('content')
     <p class="text-gray-500 text-md font-bold bg-white text-center rounded shadow-lg border h-8"> REPORTE GENERAL</p>
     <div class="card">
@@ -38,7 +37,9 @@
                                     }
                                     else {
                                         $colord = 'red';
+                                        
                                     }
+                                   
                                 ?>
                             <td class="text-center font-bold" style ="color: {{$colord}}"> {{round($desviacion),2}} % </td>
                             <td class="text-center">{{round($cumplimiento),2}} %</td>

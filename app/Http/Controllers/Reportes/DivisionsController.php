@@ -69,6 +69,12 @@ class DivisionsController extends Controller
                 if ($cont1 > 0){
                     $plan_usuario_d = $plan_fecha_hoy_usuario_d / $asignacion_cont_d;
                     $real_usuario_d = $real_total_asignacion_d / $asignacion_cont_d;
+                    if ($plan_usuario_d > 100){
+                        $plan_usuario_d = 100;
+                    }
+                    if ($real_usuario_d  > 100){
+                        $real_usuario_d  = 100;
+                    }
                     $plan_total_usuarios_d = $plan_total_usuarios_d + $plan_usuario_d;
                     $real_total_usuarios_d = $real_total_usuarios_d + $real_usuario_d;
                     $cant_usuarios_d = $cant_usuarios_d + 1;
@@ -77,6 +83,12 @@ class DivisionsController extends Controller
             if($cant_usuarios_d > 0){
                 $plan_total_d = $plan_total_usuarios_d / $cant_usuarios_d;
                 $real_total_d = $real_total_usuarios_d / $cant_usuarios_d;
+                if ($plan_total_d > 100){
+                    $plan_total_d = 100;
+                }
+                if ($real_total_d > 100){
+                    $real_total_d = 100;
+                }
                 $plan_total_dr = $plan_total_dr + $plan_total_d;
                 $real_total_dr = $real_total_dr + $real_total_d;
                 $negocio->reportenegocio->update(['plan' => $plan_total_d,'real' => $real_total_d]);

@@ -24,6 +24,7 @@ class NegociosController extends Controller
         $plan_total_usuarios_n = 0;
         $real_total_usuarios_n = 0;
         $cant_usuarios_d =0;
+        $usuariospaginate = User::where('negocio_id',$negocioid)->paginate(4);
         $usuarios = User::where('negocio_id',$negocioid)->get();
             foreach ($usuarios as $usuario){
                 $asignacions = Asignacion::where('user_id',$usuario->id)
@@ -61,6 +62,12 @@ class NegociosController extends Controller
                 if ($cont1 > 0){
                     $plan_usuario_n = $plan_fecha_hoy_usuario_d / $asignacion_cont_d;
                     $real_usuario_n = $real_total_asignacion_n / $asignacion_cont_d;
+                    if ($plan_usuario_n  > 100){
+                        $plan_usuario_n  = 100;
+                    }
+                    if ($real_usuario_n > 100){
+                        $real_usuario_n = 100;
+                    }
                     $usuario->reporteusuario->update(['plan' => $plan_usuario_n,'real' => $real_usuario_n]);
                     $plan_total_usuarios_n = $plan_total_usuarios_n + $plan_usuario_n;
                     $real_total_usuarios_n = $real_total_usuarios_n + $real_usuario_n;
@@ -70,6 +77,12 @@ class NegociosController extends Controller
             if($cant_usuarios_d > 0){
                 $plan_total_n = $plan_total_usuarios_n / $cant_usuarios_d;
                 $real_total_n = $real_total_usuarios_n / $cant_usuarios_d;
+                if ($plan_total_n > 100){
+                    $plan_total_n = 100;
+                }
+                if ($real_total_n > 100){
+                    $real_total_n = 100;
+                }
                 $desviacion_n = ($plan_total_n) - ($real_total_n);
                 $cumplimiento_n = (($real_total_n) / ($plan_total_n)) * 100; 
                 $reportegeneral = Reportegeneral::where('avance_id','1')->first();
@@ -83,7 +96,7 @@ class NegociosController extends Controller
                 $reportegeneral = 1;
     
             }
-        return view('reportes.negocios',compact('negocio','plan_total_n','real_total_n','desviacion_n','cumplimiento_n','usuarios','anoreporteid','reportegeneral'));
+        return view('reportes.negocios',compact('usuariospaginate','negocio','plan_total_n','real_total_n','desviacion_n','cumplimiento_n','usuarios','anoreporteid','reportegeneral'));
 
     }
 
