@@ -44,6 +44,12 @@
                         else{
                             $desviacion_d = ($negocio->reportenegocio->plan) - ($negocio->reportenegocio->real);
                             $cumplimiento_d = (($negocio->reportenegocio->real) / ($negocio->reportenegocio->plan)) * 100;
+                            if($desviacion_d > 100){
+                                $desviacion_d = 100;
+                            }
+                            if($cumplimiento_d > 100){
+                                $cumplimiento_d = 100;
+                            }
                         }
                     ?>
                     <td class="text-center font-bold">{{round($desviacion_d,2)}} %</td>

@@ -88,6 +88,7 @@
                                                         if($usuario->reporteusuario->plan == '0'){
                                                             $desviacion_d = 0;
                                                             $cumplimiento_d = 0;
+                                                            $colord_d = 'green';
                                                         }
                                                         else{
                                                             $desviacion_d = ($usuario->reporteusuario->plan) - ($usuario->reporteusuario->real);
@@ -98,6 +99,7 @@
                                                             elseif($desviacion_d >=2 && $desviacion_d <=10){
                                                                 $colord_d = 'orange';
                                                             }
+                                                            
                                                             else {
                                                                 $colord_d = 'red';
 
@@ -142,6 +144,9 @@
                 @else
                     <div class="px-6 py-4">
                         No hay usuarios registrados con el negocio seleccionado
+                    </div>
+                    <div class="px-4">
+                        <a href="{{route('listado.negocio')}}" class="text-gray-600 text-lg font-bold hover:text-red-600 text">Regresar</a>
                     </div>
 
                     

@@ -49,16 +49,26 @@ class RegionsController extends Controller
                     $plan_inf_d = 0;
                     $plan_divulgacion_d = 0;
                     $plan_carga_d = 0;
+                    if(Carbon::parse($asignacion_usuario->fecha_conformacion_i) < Carbon::parse($fecha_actual)){
                     $dias_real_conformacion_d = Carbon::parse($asignacion_usuario->fecha_conformacion_i)->diffInDays(Carbon::parse($fecha_actual));
                     $plan_conformacion_d = ((($dias_real_conformacion_d) * 100) / ($asignacion_usuario->plan_dias_conformacion)) * 0.10;
+                    }
+                    if(Carbon::parse($asignacion_usuario->fecha_recopilacion_i) < Carbon::parse($fecha_actual)){
                     $dias_real_recopilacion_d = Carbon::parse($asignacion_usuario->fecha_recopilacion_i)->diffInDays(Carbon::parse($fecha_actual));
                     $plan_recopilacion_d = ((($dias_real_recopilacion_d) * 100) / ($asignacion_usuario->plan_dias_recopilacion)) * 0.50;
+                    }
+                    if(Carbon::parse($asignacion_usuario->fecha_inf_i) < Carbon::parse($fecha_actual)){
                     $dias_real_inf_d = Carbon::parse($asignacion_usuario->fecha_inf_i)->diffInDays(Carbon::parse($fecha_actual));
                     $plan_inf_d = ((($dias_real_inf_d) * 100) / ($asignacion_usuario->plan_dias_inf)) * 0.20;
+                    }
+                    if(Carbon::parse($asignacion_usuario->fecha_divulgacion_i) < Carbon::parse($fecha_actual)){
                     $dias_real_divulgacion_d = Carbon::parse($asignacion_usuario->fecha_divulgacion_i)->diffInDays(Carbon::parse($fecha_actual));
                     $plan_divulgacion_d = ((($dias_real_divulgacion_d) * 100) / ($asignacion_usuario->plan_dias_divulgacion)) * 0.15;
+                    }
+                    if(Carbon::parse($asignacion_usuario->fecha_carga_i) < Carbon::parse($fecha_actual)){
                     $dias_real_carga_d = Carbon::parse($asignacion_usuario->fecha_carga_i)->diffInDays(Carbon::parse($fecha_actual));
                     $plan_carga_d = ((($dias_real_carga_d) * 100) / ($asignacion_usuario->plan_dias_carga)) * 0.05;
+                    }
                     $plan_fecha_hoy_d = ($plan_conformacion_d + $plan_recopilacion_d + $plan_inf_d + $plan_divulgacion_d + $plan_carga_d);
                     if ($plan_fecha_hoy_d > 100){
                         $plan_fecha_hoy_d = 100;

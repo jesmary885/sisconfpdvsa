@@ -77,7 +77,6 @@ class UserEdit extends Component
         $usuario->apellido = $this->apellido;
         $usuario->cedula = $this->cedula;
         $usuario->telefono = $this->telefono;
-        $usuario->password = Hash::make($this->cedula);
         $usuario->region_id = $this->region_id;
         $usuario->division_id = $this->division_id;
         $usuario->negocio_id = $this->negocio_id;

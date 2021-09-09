@@ -39,6 +39,12 @@
                     <?php 
                         $desviacion_d = ($division->reportedivision->plan) - ($division->reportedivision->real);
                         $cumplimiento_d = (($division->reportedivision->real) / ($division->reportedivision->plan)) * 100;
+                        if($desviacion_d > 100){
+                            $desviacion_d = 100;
+                        }
+                        if($cumplimiento_d > 100){
+                            $cumplimiento_d = 100;
+                        }
                     ?>
                     <td class="text-center font-bold">{{round($desviacion_d,2)}} %</td>
                     <td class="text-center">{{round($cumplimiento_d,2)}} %</td>

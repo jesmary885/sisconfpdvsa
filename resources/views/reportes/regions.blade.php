@@ -87,6 +87,7 @@
                                             if($division->reportedivision->plan == '0'){
                                                 $desviacion_d = 0;
                                                 $cumplimiento_d = 0;
+                                                $colord_d = 'green';
                                             }
                                             else{
                                                 $desviacion_d = ($division->reportedivision->plan) - ($division->reportedivision->real);
@@ -140,6 +141,9 @@
     @else
         <div class="px-6 py-4">
             No hay divisiones registradas con la región seleccionada
+        </div>
+        <div class="px-4">
+            <a href="{{route('listado.region')}}" class="text-gray-600 text-lg font-bold hover:text-red-600 text">Regresar</a>
         </div>
     @endif
 </div>

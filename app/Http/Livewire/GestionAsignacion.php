@@ -109,6 +109,8 @@ class GestionAsignacion extends Component
         $asignacion->fecha_inf_i =  $this->input_inf_i;
         $asignacion->fecha_divulgacion_i = $this->input_divulgacion_i;
         $asignacion->fecha_carga_i = $this->input_carga_i;
+
+
         $asignacion->ano_creacion = $this->ano;
         $asignacion->plan_dias_conformacion = $conformacion_total;
         $asignacion->plan_dias_recopilacion = $recopilacion_total;

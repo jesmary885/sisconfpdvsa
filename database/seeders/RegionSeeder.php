@@ -26,7 +26,7 @@ class RegionSeeder extends Seeder
             });
         });*/
 
-        $regions = ['FAJA PETROLIFERA', 'ORIENTE', 'OCCIDENTE'];
+        $regions = ['FAJA PETROLIFERA','OCCIDENTE','ORIENTE','COSTA AFUERA'];
 
         foreach ($regions as $region) {
             Region::create([

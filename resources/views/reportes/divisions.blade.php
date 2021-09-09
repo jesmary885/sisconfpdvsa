@@ -122,6 +122,7 @@
                                                 if($negocio->reportenegocio->plan == '0'){
                                                     $desviacion_d = 0;
                                                     $cumplimiento_d = 0;
+                                                    $colord_d = 'green';
                                                 }
                                                 else{
                                                     $desviacion_d = ($negocio->reportenegocio->plan) - ($negocio->reportenegocio->real);
@@ -175,6 +176,9 @@
             <div class="px-6 py-4">
                 No hay negocios registradas con la división seleccionada
             </div>  
+            <div class="px-4">
+                <a href="{{route('listado.division')}}" class="text-gray-600 text-lg font-bold hover:text-red-600 text">Regresar</a>
+            </div>
         @endif
     </div>
 

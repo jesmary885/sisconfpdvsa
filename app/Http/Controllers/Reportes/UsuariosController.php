@@ -31,16 +31,26 @@ class UsuariosController extends Controller
             $plan_inf = 0;
             $plan_divulgacion = 0;
             $plan_carga = 0;
+            if(Carbon::parse($asignacion->fecha_conformacion_i) < Carbon::parse($fecha_actual)){
             $dias_real_conformacion = Carbon::parse($asignacion->fecha_conformacion_i)->diffInDays(Carbon::parse($fecha_actual));
             $plan_conformacion = ((($dias_real_conformacion) * 100) / ($asignacion->plan_dias_conformacion)) * 0.10;
+            }
+            if(Carbon::parse($asignacion->fecha_recopilacion_i) < Carbon::parse($fecha_actual)){
             $dias_real_recopilacion = Carbon::parse($asignacion->fecha_recopilacion_i)->diffInDays(Carbon::parse($fecha_actual));
             $plan_recopilacion = ((($dias_real_recopilacion) * 100) / ($asignacion->plan_dias_recopilacion)) * 0.50;
+            }
+            if(Carbon::parse($asignacion->fecha_inf_i) < Carbon::parse($fecha_actual)){
             $dias_real_inf = Carbon::parse($asignacion->fecha_inf_i)->diffInDays(Carbon::parse($fecha_actual));
             $plan_inf = ((($dias_real_inf) * 100) / ($asignacion->plan_dias_inf)) * 0.20;
+            }
+            if(Carbon::parse($asignacion->fecha_divulgacion_i) < Carbon::parse($fecha_actual)){
             $dias_real_divulgacion = Carbon::parse($asignacion->fecha_divulgacion_i)->diffInDays(Carbon::parse($fecha_actual));
             $plan_divulgacion = ((($dias_real_divulgacion) * 100) / ($asignacion->plan_dias_divulgacion)) * 0.15;
+            }
+            if(Carbon::parse($asignacion->fecha_carga_i) < Carbon::parse($fecha_actual)){
             $dias_real_carga = Carbon::parse($asignacion->fecha_carga_i)->diffInDays(Carbon::parse($fecha_actual));
             $plan_carga = ((($dias_real_carga) * 100) / ($asignacion->plan_dias_carga)) * 0.05;
+            }
             $plan_fecha_hoy = ($plan_conformacion + $plan_recopilacion + $plan_inf + $plan_divulgacion + $plan_carga);
             if ($plan_fecha_hoy > 100){
                  $plan_fecha_hoy = 100;
