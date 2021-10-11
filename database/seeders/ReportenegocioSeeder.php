@@ -35,6 +35,61 @@ class ReportenegocioSeeder extends Seeder
                 'plan' => '0',
                 'negocio_id' => '4',
             ],
+            [
+                'real' => '0',
+                'plan' => '0',
+                'negocio_id' => '5',
+            ],
+            [
+                'real' => '0',
+                'plan' => '0',
+                'negocio_id' => '6',
+            ],
+            [
+                'real' => '0',
+                'plan' => '0',
+                'negocio_id' => '7',
+            ],
+            [
+                'real' => '0',
+                'plan' => '0',
+                'negocio_id' => '8',
+            ],
+            [
+                'real' => '0',
+                'plan' => '0',
+                'negocio_id' => '9',
+            ],
+            [
+                'real' => '0',
+                'plan' => '0',
+                'negocio_id' => '10',
+            ],
+            [
+                'real' => '0',
+                'plan' => '0',
+                'negocio_id' => '11',
+            ],
+            [
+                'real' => '0',
+                'plan' => '0',
+                'negocio_id' => '12',
+            ],
+            [
+                'real' => '0',
+                'plan' => '0',
+                'negocio_id' => '13',
+            ],
+            [
+                'real' => '0',
+                'plan' => '0',
+                'negocio_id' => '14',
+            ],
+            [
+                'real' => '0',
+                'plan' => '0',
+                'negocio_id' => '15',
+            ],
         ];
 
         foreach ($negocios as $negocio){

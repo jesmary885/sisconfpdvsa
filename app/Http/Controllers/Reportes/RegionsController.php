@@ -24,7 +24,7 @@ class RegionsController extends Controller
         $regionid = $region->id;
         $fecha_actual = date('Y-m-d');
         $divisions = Division::where('region_id',$regionid)->get();
-        $divisionspaginate = Division::where('region_id',$regionid)->paginate(2);
+        $divisionspaginate = Division::where('region_id',$regionid)->paginate(6);
         //$reportegeneral = Reportegeneral::where('avance_id','1')->get();
         $division_total = 0;
         $plan_total_dr = 0;
@@ -127,6 +127,7 @@ class RegionsController extends Controller
             $desviacion_r = 1;
             $cumplimiento_r = 1;
             $reportegeneral = 1;
+            $data = 0;
 
         }
 

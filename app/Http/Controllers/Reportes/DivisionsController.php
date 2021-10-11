@@ -23,7 +23,7 @@ class DivisionsController extends Controller
         $divisionid = $division->id;
         $fecha_actual = date('Y-m-d');
         $negocios = Negocio::where('division_id',$divisionid)->get();
-        $negociospaginate = Negocio::where('division_id',$divisionid)->paginate(2);
+        $negociospaginate = Negocio::where('division_id',$divisionid)->paginate(6);
         //$reportegeneral = Reportegeneral::where('avance_id','1')->get();
         $negocio_total = 0;
         $plan_total_dr = 0;
@@ -123,7 +123,7 @@ class DivisionsController extends Controller
             $desviacion_r = 1;
             $cumplimiento_r = 1;
             $reportegeneral = 1;
-
+            $data = 0;
         }
         return view('reportes.divisions',compact('division','plan_total_r','real_total_r','desviacion_r','cumplimiento_r','negocios','anoreporteid','reportegeneral','data','negociospaginate'));
 

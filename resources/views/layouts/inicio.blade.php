@@ -33,11 +33,7 @@
     <div class="font-sans text-gray-900 antialiased">
         @yield('content')
     </div>
-
-  
-  
     @livewireScripts
-
     @stack('script')
 </div>
 </body>
