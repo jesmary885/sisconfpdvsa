@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  
     {{-- datetimepicker --}}
     {{-- <link rel="stylesheet" type="text/css" href="{{asset('datetimepicker/build/jquery.datetimepicker.css')}}"> --}}
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">

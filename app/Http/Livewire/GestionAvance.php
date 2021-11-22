@@ -61,11 +61,8 @@ class GestionAvance extends Component
             }
             $plan_fecha_hoy = ($plan_conformacion + $plan_recopilacion + $plan_inf + $plan_divulgacion + $plan_carga);
 
-            if ($plan_fecha_hoy > 100){
-                $plan_fecha_hoy = 100;
-            }
-          
-            
+           // if($plan_fecha_hoy == 0) $plan_fecha_hoy = 1;
+             if ($plan_fecha_hoy > 100) $plan_fecha_hoy = 100;
             $asignacion->avance->update(['avance_plan' => $plan_fecha_hoy]);
             //$this_avance = Avance::where('asignacion_id',$asignacion->id)->get();
        }

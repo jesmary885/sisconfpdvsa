@@ -6,6 +6,7 @@ use App\Http\Controllers\Reportes\RegionsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\GestionAsignacion;
 use App\Http\Livewire\GestionAvance;
+use App\Http\Livewire\Asignacion\UsuariosListado;
 use App\Http\Livewire\Reportes\DivisionsReporte;
 use App\Http\Livewire\Reportes\NegociosReporte;
 use App\Http\Livewire\Reportes\ObjoperacionalsReporte;
@@ -30,6 +31,9 @@ Route::middleware(['auth'])->group(function()
 
     Route::get('consultas', [App\Http\Controllers\AsignacionConsultaController::class, 'index'])->name('consultas');
     Route::post('consultas', [App\Http\Controllers\AsignacionConsultaController::class, 'buscar'])->name('consultas.buscar');
+    Route::post('consultas', [App\Http\Controllers\AsignacionConsultaController::class, 'buscar'])->name('consultas.buscar');
+   // Route::get('listado_usuario', [App\Http\Controllers\AsignacionController::class, 'show'])->name('asignacion_listado_usuario');
+   Route::get('/Usuarios_listado', UsuariosListado::class)->name('UsuariosListado');
 
     //Reportes
     Route::get('consultas_usuarios/{usuario}/{anoreporte}', [App\Http\Controllers\Reportes\UsuariosController::class, 'index'])->name('reporte.usuario');

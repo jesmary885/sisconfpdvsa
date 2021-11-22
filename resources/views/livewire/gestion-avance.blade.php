@@ -20,22 +20,16 @@
                                 <td class="py-2 pl-4">{{round($asignacion->avance->avance_real,2) ?? '-'}} %</td>
                                 <td class="py-2 pl-8">{{round($asignacion->avance->avance_plan,2) ?? '-'}} %</td>
                                 <?php $desviacion = ($asignacion->avance->avance_plan) - ($asignacion->avance->avance_real);
-                                        if ($desviacion <=1) {
-                                                $colord = 'green';
-                                            }
-                                            elseif($desviacion >=2 && $desviacion <=10){
-                                                $colord = 'orange';
-                                            }
-                                            else {
-                                                $colord = 'red';
-                                            }
-                                        if ($desviacion > 100){
-                                            $desviacion = 100;
-                                        }
-                                        $cumplimiento = (($asignacion->avance->avance_real) / ($asignacion->avance->avance_plan)*100);
-                                        if ($cumplimiento > 100){
-                                            $cumplimiento = 100;
-                                        }
+                                        if ($desviacion <=1) $colord = 'green';   
+                                        elseif($desviacion >=2 && $desviacion <=10) $colord = 'orange';
+                                        else $colord = 'red';
+                                
+                                        if ($desviacion > 100) $desviacion = 100;
+                                        
+                                        if ($asignacion->avance->avance_real == 0) $cumplimiento = (($asignacion->avance->avance_real) / (1)*100);
+                                        else $cumplimiento = (($asignacion->avance->avance_real) / ($asignacion->avance->avance_plan)*100);
+
+                                        if ($cumplimiento > 100) $cumplimiento = 100;
                                         ?>
                                         <td class="py-2 pl-8 font-bold" style ="color: {{$colord}}"> {{round($desviacion)}} % </td>
                                         <td class="py-2 pl-8">{{round($cumplimiento)}} %</td>

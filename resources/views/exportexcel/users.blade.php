@@ -26,8 +26,9 @@
                 <th>Objetivo operacional</th>
                 <th>Avance Real</th>
                 <th>Planificado</th>
-                <th >Desviación</th>
-                <th >Cumplimiento</th>
+                <th>Desviación</th>
+                <th>Cumplimiento</th>
+                <th>Observaciones</th>
             </tr>
         </thead>
         <tbody>
@@ -48,6 +49,7 @@
                     ?>                     
                     <td class="py-2 pl-8 font-bold"> {{round($desviacion),2}} % </td>
                     <td class="py-2 pl-8">{{round($cumplimiento),2}} %</td>
+                    <td class="py-2 pl-8">{{$asignacion->avance->avance_observaciones}}</td>
                 </tr>
             @endforeach 
         </tbody>

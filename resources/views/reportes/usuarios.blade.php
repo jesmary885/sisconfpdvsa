@@ -61,6 +61,7 @@
                                     <th class="px-2">Planificado</th>
                                     <th class="px-2">Desviación</th>
                                     <th class="px-2">Cumplimiento</th>
+                                    <th class="px-2">Observaciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -69,28 +70,22 @@
                                         <td class="p-2">{{$asignacion->objoperacional->description}}</td>
                                         <td class="text-center">{{round($asignacion->avance->avance_real,2) ?? '-'}} %</td>
                                         <td class="text-center">{{round($asignacion->avance->avance_plan,2) ?? '-'}} %</td>
-                                        <?php $desviacion = ($asignacion->avance->avance_plan) - ($asignacion->avance->avance_real);
-                                            $cumplimiento = (($asignacion->avance->avance_real) / ($asignacion->avance->avance_plan)*100);
-                                            if ($desviacion <=1) {
-                                                $colord = 'green';
-                                            }
-                                            elseif($desviacion >=2 && $desviacion <=10){
-                                                $colord = 'orange';
-                                            }
-                                            else {
-                                                $colord = 'red';
+                                        <?php 
+                                            $desviacion = ($asignacion->avance->avance_plan) - ($asignacion->avance->avance_real);
+                                            if ($asignacion->avance->avance_plan == 0)  $cumplimiento = (($asignacion->avance->avance_real) / (1)*100);
+                                            else $cumplimiento = (($asignacion->avance->avance_real) / ($asignacion->avance->avance_plan)*100);
+                                            
+                                            if ($desviacion <=1) $colord = 'green';
+                                            elseif($desviacion >=2 && $desviacion <=10) $colord = 'orange';
+                                            else $colord = 'red';
 
-                                                if ($desviacion > 100){
-                                                    $desviacion = 100;
-                                                 }
-                                            }
-                                        if ($cumplimiento > 100){
-                                            $cumplimiento = 100;
-                                        }
-
+                                            if ($desviacion > 100) $desviacion = 100;
+                                                 
+                                            if ($cumplimiento > 100) $cumplimiento = 100;
                                         ?>
                                         <td class="text-center font-bold" style ="color: {{$colord}}"> {{round($desviacion)}} % </td>
                                         <td class="text-center">{{round($cumplimiento)}} %</td>
+                                        <td class="text-justify pl-2">{{$asignacion->avance->avance_observaciones}}</td>
                                     </tr>
                                 @endforeach 
                             </tbody>

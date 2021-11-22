@@ -43,5 +43,16 @@ class AsignacionController extends Controller
              return redirect()->route('home.avance');
     }
 
+    public function show()
+    {
+        return view('asignacion.listado_usuarios');
+    }
+
+    public function eliminar()
+    {
+        return redirect()->route('asignacion_listado.usuario');
+    }
+
+   
   
 }

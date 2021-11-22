@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class EditarAsignacion extends Component
 {
-    public $asignacion,$conformacion,$recopilacion,$informacion,$divulgacion,$recomendaciones;
+    public $asignacion,$conformacion,$recopilacion,$informacion,$divulgacion,$recomendaciones,$observaciones;
     public $open = false;
 
     protected $rules = [
@@ -16,6 +16,7 @@ class EditarAsignacion extends Component
         'informacion' => 'required|numeric',
         'divulgacion' => 'required|numeric',
         'recomendaciones' => 'required|numeric',
+        'observaciones' => 'required',
     ];
 
     public function render()
@@ -36,6 +37,7 @@ class EditarAsignacion extends Component
         $informacion = $this->informacion * 0.20;
         $divulgacion = $this->divulgacion * 0.15;
         $recomendaciones = $this->recomendaciones * 0.05;
+        $observaciones = $this->observaciones;
         $sumreal= $conformacion + $recopilacion + $informacion + $divulgacion + $recomendaciones;
         if($sumreal > 100){
             $sumreal = 100;
@@ -53,6 +55,7 @@ class EditarAsignacion extends Component
         $avance->avance_plan = $avance->avance_plan;
         $avance->avance_desviacion = $desviacion;
         $avance->avance_cumplimiento = $cumplimiento;
+        $avance->avance_observaciones = $observaciones;
         $avance->save();
 
         return redirect()->route('home.avance');
