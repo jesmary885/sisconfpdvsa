@@ -1,4 +1,4 @@
-<div x-data="{ count: 0 }">
+<div>
     <x-table-responsive>
         <div class="pt-4">
             <x-input type="text" 
@@ -33,7 +33,7 @@
                                     </td>
                                     <td >
                                         <div x-show="count === 1" >
-                                            <a href="{{route('', 'usuario' => $user)}}" class="text-blue-600 font-bold hover:text-blue-900">Asignaciones</a>  
+                                            <a href="{{route('usuario_asignacion_eliminar', ['usuario' => $user])}}" class="text-blue-600 font-bold hover:text-blue-900">Asignaciones</a>  
                                         </div>      
                                     </td>
                                 </tr>

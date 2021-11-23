@@ -2,11 +2,21 @@
 
 namespace App\Http\Livewire\Asignacion;
 
+use App\Models\User;
 use Livewire\Component;
+Use Livewire\WithPagination;
 
 class UsuariosListado extends Component
 {
   
+    public $search;
+
+    use WithPagination;
+
+    public function updatingSearch(){
+        $this->resetPage();
+    }
+
     public function render()
     {
         $users = User::where('name', 'LIKE', '%' . $this->search . '%')
@@ -20,3 +30,8 @@ class UsuariosListado extends Component
         $this->resetPage();
     }
 }
+
+
+
+
+

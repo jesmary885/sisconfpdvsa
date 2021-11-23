@@ -56,7 +56,7 @@
                         <ul class="p-2"> 
                             <li class="navigation-link text-gray-500 hover:bg-TrueGray-200 hover:text-red-500"> <a href="{{route('home.asignacion')}}">Cargar asignación</li>
                             <li class="navigation-link text-gray-500 hover:bg-TrueGray-200 hover:text-red-500"> <a href="{{route('consultas')}}">Consultar Asignación</a> </li>
-                            <li class="navigation-link text-gray-500 hover:bg-TrueGray-200 hover:text-red-500"> <a href="{{route('asignacion.eliminar')}}">Eliminar Asignación</a> </li>
+                            <li class="navigation-link text-gray-500 hover:bg-TrueGray-200 hover:text-red-500"> <a href="{{route('asignacion_listado_usuario')}}">Eliminar Asignación</a> </li>
                         </ul>
                         <h2 class="text-red-500 text-lg font-bold mt-6 ">Gestión de usuario</h2>
                         <ul class="p-2">

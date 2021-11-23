@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Asignacion;
 use App\Models\Avance;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AsignacionController extends Controller
@@ -48,11 +49,22 @@ class AsignacionController extends Controller
         return view('asignacion.listado_usuarios');
     }
 
-    public function eliminar()
+    public function delete(User $usuario)
     {
-        return redirect()->route('asignacion_listado.usuario');
+        $usuarioid = $usuario->id;
+        $eliminar = 'false';
+        $asignacions = Asignacion::where('user_id',$usuarioid)->paginate();
+        return view('asignacion.listado_asignaciones',compact('asignacions','usuario','eliminar'));
     }
 
-   
-  
+    public function destroy(Asignacion $asignacion, User $usuario)
+    {
+        $avance = Avance::where('asignacion_id',$asignacion->id)->first();
+        $avance->delete();
+        $asignacion->delete();
+        $eliminar = 'true';
+        $asignacions = Asignacion::where('user_id',$usuario->id)->paginate();
+        return view('asignacion.listado_asignaciones',compact('asignacions','usuario','eliminar'));
+    }
+
 }

@@ -31,9 +31,11 @@ Route::middleware(['auth'])->group(function()
 
     Route::get('consultas', [App\Http\Controllers\AsignacionConsultaController::class, 'index'])->name('consultas');
     Route::post('consultas', [App\Http\Controllers\AsignacionConsultaController::class, 'buscar'])->name('consultas.buscar');
-    Route::post('consultas', [App\Http\Controllers\AsignacionConsultaController::class, 'buscar'])->name('consultas.buscar');
-   // Route::get('listado_usuario', [App\Http\Controllers\AsignacionController::class, 'show'])->name('asignacion_listado_usuario');
-   Route::get('/Usuarios_listado', UsuariosListado::class)->name('UsuariosListado');
+    Route::get('usuarios', [App\Http\Controllers\AsignacionController::class, 'show'])->name('asignacion_listado_usuario');
+    Route::get('usuarios/{usuario}', [App\Http\Controllers\AsignacionController::class, 'delete'])->name('usuario_asignacion_eliminar');
+    Route::delete('usuarios/{asignacion}/{usuario}', [App\Http\Controllers\AsignacionController::class, 'destroy'])->name('asignacion_eliminar');
+    Route::get('consultas_usuarios/{usuario}/{anoreporte}', [App\Http\Controllers\Reportes\UsuariosController::class, 'index'])->name('reporte.usuario');
+   
 
     //Reportes
     Route::get('consultas_usuarios/{usuario}/{anoreporte}', [App\Http\Controllers\Reportes\UsuariosController::class, 'index'])->name('reporte.usuario');
@@ -50,8 +52,6 @@ Route::middleware(['auth'])->group(function()
     Route::get('listado_objestrategico', [App\Http\Controllers\Reportes\ObjEstrategicosController::class, 'show'])->name('listado.objestrategico');
     Route::get('consultas_objtactico/{objtactico}/{anoreporte}', [App\Http\Controllers\Reportes\ObjTacticosController::class, 'index'])->name('reporte.objtactico');
     Route::get('listado_objtactico', [App\Http\Controllers\Reportes\ObjTacticosController::class, 'show'])->name('listado.objtactico');
-
-    Route::get('consultas/{tiporeporte}', [App\Http\Controllers\Reportes\TipoReporteController::class,'index'])->name('reporte.tipo');
 
     //Export Excel
     Route::get('consultas_regiones/export-excel', [App\Http\Controllers\Reportes\RegionsController::class, 'exportExcel']);
