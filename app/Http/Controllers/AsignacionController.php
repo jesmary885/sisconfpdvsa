@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Asignacion;
 use App\Models\Avance;
+use App\Models\Reportegeneral;
 use App\Models\User;
 use Illuminate\Http\Request;
 

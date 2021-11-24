@@ -21,8 +21,8 @@ class CreateAvancesTable extends Migration
             $table->integer('avance_desviacion');
             $table->integer('avance_cumplimiento');
             $table->unsignedBigInteger('asignacion_id');
+            $table->foreign('asignacion_id')->references('id')->on('asignacions')->onDelete('CASCADE');
             $table->longText('avance_observaciones');
-            $table->foreign('asignacion_id')->references('id')->on('asignacions')->onDelete('cascade');
 
             
           

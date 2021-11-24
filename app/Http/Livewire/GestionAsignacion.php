@@ -156,5 +156,6 @@ class GestionAsignacion extends Component
     {
         return view('livewire.gestion-asignacion');
     }
+    
 }
 

@@ -25,8 +25,9 @@ class CreateReportegeneralsTable extends Migration
             $table->integer('usuario_id');
             $table->integer('negocio_id');
             $table->integer('anoreporte_id');
-            $table->unsignedBigInteger('avance_id');
-            $table->foreign('avance_id')->references('id')->on('avances');
+            $table->integer('avance_id');
+            /*$table->unsignedBigInteger('avance_id');
+            $table->foreign('avance_id')->references('id')->on('avances');*/
         });
     }
 
