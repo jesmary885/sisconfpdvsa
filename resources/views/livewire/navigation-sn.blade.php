@@ -6,7 +6,7 @@
         {{--Franja roja con nombre del sistema--}}
         <div class="flex-1 px-2">
             <h1 class="bg-gradient-to-l from-red-600 text-right rounded-lg text-white px-2 rounded shadow-lg">
-                 Sistema De Planificación de Confiabilidad Operacional SISCONF
+                 Sistema De Planificación de Confiabilidad Operacional SISPLACONF
             </h1>
         </div>
         {{--dropdown opcion de modificar perfil de usuario, ir a panel administrativo y cerrar sesion--}}

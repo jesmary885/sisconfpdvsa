@@ -67,7 +67,7 @@
                             <tbody>
                                 @foreach ($asignacionspaginate as $asignacion)
                                     <tr class="py-2 border-collapse border border-gray-300">
-                                        <td class="p-2">{{$asignacion->objoperacional->description}}</td>
+                                        <td class="p-2">{{$asignacion->objoperacional->description}} - <b>Instalación</b>: {{$asignacion->instalacion}}</td>
                                         <td class="text-center">{{round($asignacion->avance->avance_real,2) ?? '-'}} %</td>
                                         <td class="text-center">{{round($asignacion->avance->avance_plan,2) ?? '-'}} %</td>
                                         <?php 

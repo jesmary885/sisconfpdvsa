@@ -19,7 +19,7 @@ use Livewire\Component;
 
 class GestionAsignacion extends Component
 {
-    public $objestrategicos, $regions;
+    public $objestrategicos, $regions, $instalacion;
     public $objestrategicos_id ="", $objtacticos_id ="", $objoperacionals_id ="", $region_id ="", $division_id ="",$negocio_id ="",$usuario_id ="";
     public $tacticos = [], $operacionals = [], $divisions = [], $negocios = [],$usuarios= [];
     public $input_conformacion_i, $input_conformacion_f, $input_recopilacion_i,$input_recopilacion_f,$input_inf_i,$input_inf_f,$input_divulgacion_i,$input_divulgacion_f,$input_carga_i,$input_carga_f,$fecha_creacion,$fecha_actual,$ano;
@@ -39,6 +39,7 @@ class GestionAsignacion extends Component
         'input_divulgacion_f' => 'required',
         'input_carga_i' => 'required',
         'input_carga_i' => 'required',
+        'instalacion' => 'required',
         'region_id' => 'required',
         'division_id' => 'required',
         'negocio_id' => 'required',
@@ -109,8 +110,6 @@ class GestionAsignacion extends Component
         $asignacion->fecha_inf_i =  $this->input_inf_i;
         $asignacion->fecha_divulgacion_i = $this->input_divulgacion_i;
         $asignacion->fecha_carga_i = $this->input_carga_i;
-
-
         $asignacion->ano_creacion = $this->ano;
         $asignacion->plan_dias_conformacion = $conformacion_total;
         $asignacion->plan_dias_recopilacion = $recopilacion_total;
@@ -118,6 +117,7 @@ class GestionAsignacion extends Component
         $asignacion->plan_dias_divulgacion = $divulgacion_total;
         $asignacion->plan_dias_carga = $carga_total;
         $asignacion->anoreporte_id = $ano_reporte->id;
+        $asignacion->instalacion = $this->instalacion;
         $asignacion->save();
 
         $avance = new Avance();
@@ -148,7 +148,7 @@ class GestionAsignacion extends Component
             $reporte->save();
         }
 
-        $this->reset(['objestrategicos_id','objtacticos_id','objoperacionals_id','input_conformacion_i','input_recopilacion_i','input_inf_i','input_divulgacion_i','input_carga_i','region_id','division_id','negocio_id','input_conformacion_f','input_recopilacion_f','input_inf_f','input_divulgacion_f','input_carga_f','usuario_id']);
+        $this->reset(['objestrategicos_id','objtacticos_id','objoperacionals_id','input_conformacion_i','input_recopilacion_i','input_inf_i','input_divulgacion_i','input_carga_i','region_id','division_id','negocio_id','input_conformacion_f','input_recopilacion_f','input_inf_f','input_divulgacion_f','input_carga_f','usuario_id','instalacion']);
         $this->emit('alert');
     }
 

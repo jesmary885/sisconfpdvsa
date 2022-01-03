@@ -26,11 +26,11 @@
             <div class="pt-2 px-12">
                 <div class="flex">
                     <x-label class="pr-8 pt-2" for="email" value="{{ __('Indicador') }}" />
-                    <x-input id="email" class="mt-1 w-full text-gray-300 outline-none" type="email" name="email" :value="old('email')" required/>
+                    <x-input id="email" class="mt-1 w-full text-gray-300 outline-none px-2" type="email" name="email" :value="old('email')" required/>
                 </div>
                     <div class="mt-4 flex">
                     <x-label class="pr-8 pt-2" for="password" value="{{ __('Password') }}" />
-                    <x-input id="password" class="block mt-1 w-full outline-none" type="password" name="password" required />
+                    <x-input id="password" class="block mt-1 w-full outline-none px-2" type="password" name="password" required />
                 </div>
             </div>       
             <div class="flex pt-6 w-full px-12">

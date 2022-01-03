@@ -134,7 +134,21 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
+
+    <div class="grid grid-cols-4">
+        <div class="tems-center pt-6">
+            <p class="text-gray-700 pr-8">Instalación:</p>
+        </div>
+        <div class="col-span-3 pt-6 w-full">
+            <div class="flex justify-items-stretch w-full pr-2">
+                <div class="w-full">
+                    <x-input wire:model="instalacion" class="block mt-1 outline-none w-full px-2" type="text" name="instalacion" id="instalacion" required />
+                </div>
+                
+            </div>
+        </div>
+    </div>
 
     <div class="grid grid-cols-4">
         <div class="items-center pt-4">

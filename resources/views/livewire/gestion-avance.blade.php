@@ -16,7 +16,7 @@
                     <tbody>
                          @foreach ($asignacions as $asignacion)
                             <tr class="py-2 border">
-                                <td class="py-4 pr-4 pl-6">{{$asignacion->objoperacional->description}} </td>
+                                <td class="py-4 pr-4 pl-6">{{$asignacion->objoperacional->description}} - <b>Instalación</b>: {{$asignacion->instalacion}}</td>
                                 <td class="py-2 pl-4">{{round($asignacion->avance->avance_real,2) ?? '-'}} %</td>
                                 <td class="py-2 pl-8">{{round($asignacion->avance->avance_plan,2) ?? '-'}} %</td>
                                 <?php $desviacion = ($asignacion->avance->avance_plan) - ($asignacion->avance->avance_real);

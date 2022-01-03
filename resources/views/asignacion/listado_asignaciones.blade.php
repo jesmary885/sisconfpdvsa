@@ -25,13 +25,13 @@
                                 @foreach ($asignacions as $asignacion)
                                     <tr class="py-2 border-collapse border border-gray-300">
                                         <td class="p-2">{{$asignacion->created_at}}</td>
-                                        <td class="p-2">{{$asignacion->objoperacional->description}}</td>
+                                        <td class="p-2">{{$asignacion->objoperacional->description}} - <b>Instalación</b>: {{$asignacion->instalacion}} </td>
                                         <td>
                                             <div>
                                                 <form class="form_eliminar" action="{{route('asignacion_eliminar', ['asignacion' => $asignacion ,'usuario' => $usuario])}}" method="POST"> 
                                                     @csrf
                                                     @method('delete')
-                                                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm px-4">Eliminar</button>
                                                 </form>
                                                 {{-- <a href="{{route('asignacion_eliminar', ['asignacion' => $asignacion])}}" class="text-red-600 font-bold hover:text-red-900 form_eliminar">Eliminar</a>   --}}
                                             </div>   

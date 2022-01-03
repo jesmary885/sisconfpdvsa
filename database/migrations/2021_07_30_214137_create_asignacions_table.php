@@ -27,6 +27,7 @@ class CreateAsignacionsTable extends Migration
             $table->integer('plan_dias_inf');
             $table->integer('plan_dias_divulgacion');
             $table->integer('plan_dias_carga');
+            $table->string('instalacion');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('objestrategico_id');
