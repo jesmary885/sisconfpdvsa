@@ -17,3 +17,4 @@ class ObjoperacionalExport implements FromView
 		return view('exportexcel.objoperacionals', ['reporte' => $reporte]);
 	}
 }
+

@@ -33,10 +33,10 @@ class EditarAsignacion extends Component
         $avance = Avance::where('asignacion_id',$this->asignacion->id)->first();
 
         $conformacion = $this->conformacion * 0.10;
-        $recopilacion = $this->recopilacion * 0.50;
-        $informacion = $this->informacion * 0.20;
-        $divulgacion = $this->divulgacion * 0.15;
-        $recomendaciones = $this->recomendaciones * 0.05;
+        $recopilacion = $this->recopilacion * 0.20;
+        $informacion = $this->informacion * 0.40;
+        $divulgacion = $this->divulgacion * 0.20;
+        $recomendaciones = $this->recomendaciones * 0.10;
         $observaciones = $this->observaciones;
         $sumreal= $conformacion + $recopilacion + $informacion + $divulgacion + $recomendaciones;
         if($sumreal > 100){

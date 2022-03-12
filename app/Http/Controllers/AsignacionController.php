@@ -21,10 +21,10 @@ class AsignacionController extends Controller
 
         $avance = Avance::where('asignacion_id',$asignacion->id)->first();
          $conformacion = $request ['conformacion'] * 10;
-         $recopilacion = $request ['recopilacion'] * 50;
-         $informacion = $request ['informacion'] * 20;
-         $divulgacion = $request ['divulgacion'] * 15;
-         $recomendaciones = $request ['recomendaciones'] * 5;
+         $recopilacion = $request ['recopilacion'] * 20;
+         $informacion = $request ['informacion'] * 40;
+         $divulgacion = $request ['divulgacion'] * 20;
+         $recomendaciones = $request ['recomendaciones'] * 10;
          $sumreal= $conformacion + $recopilacion + $informacion + $divulgacion + $recomendaciones;
          $real = (($sumreal) / (5)) / 10;
          if($real > 100){

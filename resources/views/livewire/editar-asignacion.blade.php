@@ -15,25 +15,25 @@
             </div>
             <x-input-error for="conformacion" />
             <div class="flex">
-                <x-label class="flex-1" for="recopilacion" value="{{ __('Recopilación de Información, desarrollo y analisis') }}" />
+                <x-label class="flex-1" for="recopilacion" value="{{ __('Recopilación de Información') }}" />
                 <x-input wire:model="recopilacion" class="block mt-1 outline-none px-2" type="number" name="recoliacion" required />
             </div>
             <x-input-error for="recopilacion" />
             
             <div class="flex">
-                <x-label class="flex-1" for="informacion" value="{{ __('Información preliminar') }}" />
+                <x-label class="flex-1" for="informacion" value="{{ __('Desarrollo y análisis') }}" />
                 <x-input wire:model="informacion" class="block mt-1 outline-none px-2" type="number" name="informacion" required />
             </div>
             <x-input-error for="informacion" />
     
             <div class="flex">
-                <x-label class="flex-1" for="divulgacion" value="{{ __('Divulgación y publicación') }}" />
+                <x-label class="flex-1" for="divulgacion" value="{{ __('Elaboración del informe preliminar') }}" />
                 <x-input wire:model="divulgacion" class="block mt-1 outline-none px-2" type="number" name="divulgacion" required />
             </div>
             <x-input-error for="divulgacion" />
     
             <div class="flex">
-                <x-label class="flex-1" for="recomendaciones" value="{{ __('Carga de recomendaciones') }}" />
+                <x-label class="flex-1" for="recomendaciones" value="{{ __('Divulgación, publicación y carga en el SMI') }}" />
                 <x-input wire:model="recomendaciones" class="block mt-1 outline-none px-2" type="number" name="recomendaciones" required />
             </div>
             <x-input-error for="recomendaciones" />
@@ -45,8 +45,7 @@
             <x-input-error for="observaciones" />
         </x-slot>
 
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda quae, natus delectus laudantium fuga quia quidem omnis minima accusantium facilis quas officiis facere autem doloremque officia ea! Cumque, unde odit?
-
+       
         <x-slot name=footer>
             <x-button wire:click="update">
                 {{ __('Registrar Avance') }}

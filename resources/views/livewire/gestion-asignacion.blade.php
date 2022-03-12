@@ -66,7 +66,7 @@
 
     <div class="grid grid-cols-4">
         <div class="tems-center pt-4">
-            <p class="text-gray-700 pr-8">Recopilación de información, Desarrollo y Analisis:</p>
+            <p class="text-gray-700 pr-8">Recopilación de información</p>
         </div>
         <div class="col-span-3 pt-6 w-full">
             <div class="flex justify-items-stretch w-full mr-6 px-4">
@@ -84,7 +84,7 @@
 
     <div class="grid grid-cols-4">
         <div class="tems-center pt-6">
-            <p class="text-gray-700 pr-8">Información Preliminar:</p>
+            <p class="text-gray-700 pr-8">Desarrollo y análisis</p>
         </div>
         <div class="col-span-3 pt-6 w-full">
             <div class="flex justify-items-stretch w-full mr-6 px-4">
@@ -102,7 +102,7 @@
 
     <div class="grid grid-cols-4">
         <div class="tems-center pt-6">
-            <p class="text-gray-700 pr-8">Divulgación y Publicación:</p>
+            <p class="text-gray-700 pr-8">Elaboración del informe preliminar</p>
         </div>
         <div class="col-span-3 pt-6 w-full">
             <div class="flex justify-items-stretch w-full mr-6 px-4">
@@ -120,7 +120,7 @@
 
     <div class="grid grid-cols-4">
         <div class="tems-center pt-6">
-            <p class="text-gray-700 pr-8">Carga de Recomendaciones:</p>
+            <p class="text-gray-700 pr-8">Divulgación, publicación y carga en el SMI</p>
         </div>
         <div class="col-span-3 pt-6 w-full">
             <div class="flex justify-items-stretch w-full mr-6 px-4">

@@ -59,7 +59,7 @@
                 <p class="text-gray-500 text-md font-bold bg-white text-center rounded shadow-lg border h-8"> REPORTE POR NEGOCIOS</p>
                 @if ($reportegeneral == '1')
                     <div class="card-body">
-                        <strong>La división seleccionada no tiene asignaciones registradas</strong>
+                        <strong>La división seleccionada no tiene asignaciones registrawe3ep'0'0'00ydas</strong>
                     </div>
                     <div class="p-4">
                         <a href="{{route('listado.division')}}" class="text-gray-600 text-lg font-bold hover:text-red-600 text">Regresar</a>
