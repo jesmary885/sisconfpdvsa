@@ -1,6 +1,6 @@
 <div>
     <div class="card">
-        <h1 class="py-12">Registro de Usuarios</h1>
+        <h1 class="py-12 ml-4">Registro de Usuarios</h1>
     </div>
 
     <div class="card w-full">
@@ -31,19 +31,19 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="cedula">Cedula:</label>
+                        <label for="cedula">Cédula:</label>
                         <input wire:model="cedula" type="text" class="form-control" placeholder="Ingrese la cedula">
                         <x-input-error for="cedula" />
                     </div>
                     <div class="form-group col-md-6">
                         <label for="telefono">Teléfono</label>
-                        <input wire:model="telefono" type="text" class="form-control" placeholder="Ingrese el teléfono">
+                        <input wire:model="telefono" type="number" min="0" class="form-control" placeholder="Ingrese el teléfono">
                         <x-input-error for="telefono" />
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-4">
-                        <label for="region">Region</label>
+                        <label for="region">Región</label>
                         <select wire:model="region_id" class="form-control">
                             <option value="" selected>Seleccionar Región</option>
                             @foreach ($regions as $region)
@@ -53,7 +53,7 @@
                         <x-input-error for="region_id" />
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="region">Division</label>
+                        <label for="region">División</label>
                         <select wire:model="division_id" class="form-control">
                             <option value="" selected>Seleccionar División</option>
                             @foreach ($divisions as $division)
@@ -73,10 +73,11 @@
                         <x-input-error for="negocio_id" />
                     </div>
                 </div>
-                <div class="py-12">
+                <div class="py-12 flex">
                     <button type="submit" class="btn btn-primary" wire:click="save">
                         Registrar usuario
                     </button>
+                    <a href="{{route('admin.users.index')}}" class="btn btn-primary"><i class="fas fa-undo-alt"></i> Regresar</a>
                 </div>
         </div>
     </div>

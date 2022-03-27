@@ -25,7 +25,7 @@
             @csrf
             <div class="pt-2 px-12">
                 <div class="flex">
-                    <x-label class="pr-8 pt-2" for="email" value="{{ __('Indicador') }}" />
+                    <x-label class="pr-8 pt-2 mr-6" for="email" value="{{ __('Email') }}" />
                     <x-input id="email" class="mt-1 w-full text-gray-300 outline-none px-2" type="email" name="email" :value="old('email')" required/>
                 </div>
                     <div class="mt-4 flex">

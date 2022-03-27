@@ -27,6 +27,8 @@ class UserCreate extends Component
         'email' => 'required|max:50|unique:users',
     ];
 
+    
+
     public function render()
     {
         return view('livewire.user-create');
