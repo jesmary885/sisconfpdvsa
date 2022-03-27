@@ -1,6 +1,6 @@
 <div>
     <x-secondary-button wire:click="$set('open', true)">
-        Actualizar
+        Actualiz
     </x-secondary-button>
 
     <x-dialog-modal wire:model="open">
