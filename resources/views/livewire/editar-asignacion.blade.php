@@ -5,7 +5,7 @@
 
     <x-dialog-modal wire:model="open">
         <x-slot name="title">
-            Actualiza
+            Actualizar
         </x-slot>
 
         <x-slot name="content">
